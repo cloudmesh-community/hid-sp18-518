@@ -105,6 +105,41 @@ the guidance of NIST 500-293 that is to define ``qualitative testing of specific
 against interoperability, security, and portability requirements.''~\cite{hid-sp18-518-NIS
 T-293}
 
+To define portability further, we have to differentiate the tiers of cloud service and 
+where portability may be needed. Cloud providers have generally grouped service into the
+following four types.
+
+\begin{itemize}
+\item
+  Infrastructure as a Service - IaaS
+\item
+  Platform as a Service - PaaS
+\item
+  Software as a Service - SaaS
+\item
+  Functions as a Service - FaaS
+\end{itemize}
+
+Each grouping has dependencies that can make portability more difficult. For example, AWS
+Lamba, which is a FaaS solution, is highly specialized and the APIs in use are specific to
+that vendor. While solutions like libcloud and boto attempt to include all providers, the 
+speed of the market makes it challenging for portability libraries to include the latest 
+and great cloud provider offerings.~\cite{hid-sp18-518-LibCloud} Another dependency is 
+the complexity of what needs to be ported. IaaS is the closest cloud offering to 
+bare-metal and dependencies for hardware-specific requirements are not a consideration 
+for most portability offerings. As the adoption of containers and functions increases, 
+legacy implementations of cloud solutions that leveraged IaaS will be more difficult to 
+port over. 
+
+The work by the Irish Centre for Cloud Computing provided a ``qualitative  comparative  
+of current  open-source  IaaS frameworks'' which is in contrast to vendor offerings which
+tend to lack in portability~\cite{hid-sp18-518-Comp-study}. The study was limited to the
+five top open-source providers of IaaS and the derived outcome of the comparison was a 
+breakdown over twenty categories that included portability to vendor IaaS. The summary
+was that each solution is tailored towards a specific need and while portability is
+possible, there are other challenges that are considered when choosing when and which
+of many cloud providers you will end up using.
+
 \section{Methodology}
 
 Python libraries exist now that help you abstract your project from  your cloud provider. 
