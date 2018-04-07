@@ -1,6 +1,6 @@
 % status: 0
 % chapter: Virtual Machines
-
+% 
 \title{RESTful API service to enable ease of portability of virtual
 machines leveraging libcloud}
 
@@ -41,18 +41,16 @@ machines leveraging libcloud}
 
 
 \begin{abstract}
-Our research will measure how the portability of an application is
-impacted by decisions made early in the software lifecycle when native
-cloud provider APIs are used. We will demonstrate how efforts to
-leverage scalable, reproducable solutions like boto and libcloud are
-advantageous. We will derive reproducable code using Swagger and Python
-to show how libraries like boto and libcloud can be used to migrate an
-application from one cloud provider to another with a measurable
-reduction in human error and with less time to execute. Additionally, we
-will leverage Swagger to develop RESTful APIs to further improve the
-gains. We will capture the results of the research, share the derived
-code and conclude how the research can be applied to existing and new
-development efforts intending to leverage cloud providers. 
+Our research will measure how the portability of an application is impacted by decisions 
+made early in the software lifecycle when native cloud provider APIs are used. We will 
+demonstrate how efforts to leverage scalable, reproducable solutions like boto and 
+libcloud are advantageous. We will derive reproducable code using Swagger and Python
+to show how libraries like boto and libcloud can be used to migrate an application from 
+one cloud provider to another with a measurable reduction in human error and with less 
+time to execute. Additionally, we will leverage Swagger to develop RESTful APIs to 
+further improve the gains. We will capture the results of the research, share the derived 
+code and conclude how the research can be applied to existing and new development efforts 
+intending to leverage cloud providers. 
 \end{abstract}
 
 \keywords{hid-sp18-518, hid-sp18-517, hid-sp18-402, libcloud}
@@ -62,30 +60,25 @@ development efforts intending to leverage cloud providers.
 
 \section{Introduction}\label{introduction}
 
-Cloud portability is a growing area of research due to the increased
-profiliferation of cloud providers~\cite{hid-sp18-518-Cloud-Council}. 
-Each provider has unique APIs and tools to their cloud environments 
-which can disincentivize portability as it influences a consumer to 
-stay with their existing solution provider. Efforts to standardize 
-cloud portability like TOSCA have made progress yet participation by 
-cloud providers is constrained due to the competitive nature in the 
-space. Each cloud provider is looking to retain their userbase and 
-there is also a desire by each provider to become the de facto 
-standard by being the market leader. To fill the gap, solutions like 
-Apache libcloud and boto have delivered an abstraction solution to 
-developers to design applications that are easy to port.
+Cloud portability is a growing area of research due to the increased profiliferation of 
+cloud providers~\cite{hid-sp18-518-Cloud-Council}. Each provider has unique APIs and 
+tools to their cloud environments  which can disincentivize portability as it influences 
+a consumer to  stay with their existing solution provider. Efforts to standardize 
+cloud portability like TOSCA have made progress yet participation by cloud providers is 
+constrained due to the competitive nature in the  space. Each cloud provider is looking 
+to retain their userbase and there is also a desire by each provider to become the de 
+facto  standard by being the market leader. To fill the gap, solutions like Apache 
+libcloud and boto have delivered an abstraction solution to developers to design 
+applications that are easy to port.
 
-Developers are already confronted with a lack of transparency on which
-cloud provider is optimal for the long-term sustainability of their
-application. Additionally, attempts to abstract away from cloud
-providers are helpful yet their non-standardization still potentially
-locks you into the solutions provided by Apache or communities like
-boto. We will deliver a continuation of that abstraction concept with an
-accepted standard, REST, to extend libcloud and boto. By leveraging
-REST, we intend to introduce a standardized implementation that
-leverages cloud portability libraries to manage the diversity of cloud
-applications. A high-level abstract of the concept is shown
-in Figure~\ref{F:arch}.
+Developers are already confronted with a lack of transparency on which cloud provider is 
+optimal for the long-term sustainability of their application. Additionally, attempts to 
+abstract away from cloud providers are helpful yet their non-standardization still 
+potentially locks you into the solutions provided by Apache or communities like boto. We 
+will deliver a continuation of that abstraction concept with an accepted standard, REST, 
+to extend libcloud and boto. By leveraging REST, we intend to introduce a standardized 
+implementation that leverages cloud portability libraries to manage the diversity of 
+cloud applications. A high-level abstract of the concept is shown in Figure~\ref{F:arch}.
 
 \begin{figure}[!ht]
   \centering
@@ -93,17 +86,33 @@ in Figure~\ref{F:arch}.
   \caption{Project Architecture}\label{F:arch}
 \end{figure}
 
-Python libraries exist now that help you abstract your project from 
-your cloud provider. This may be important if you think you may need 
-to use multiple cloud providers or if you want to ensure you take 
-steps to avoid provider lock-in. There are multiple providers in this 
-space and one of them is Apache Libcloud~\cite{hid-sp18-518-LibCloud}
-To put it simply, this library allows you to code simple resource 
-management that is independent of cloud provider specific API calls.
 
 \section{Literature Review}
 
+The National Institute of Standards and Technology defines cloud  portability as ``data 
+that can be moved from one cloud system to another and that  applications can be ported 
+and run on different  cloud systems at an  acceptable cost.''~\cite{hid-sp18-518-NIST-291} 
+The concept of portability can be extended to encompass the full application stack from
+the web service to the underlying hardware itself. Portability can also simply mean the 
+ability to ensure high availability where you only are looking to protect against one 
+cloud provider being a single point of faiure.
+
+In NIST Special Publication 500-293, the United States governement has defined a strategic
+roadmap that includes ten formal recommendations for all cloud usage. Out of the ten 
+requirements, eight of them reference portability and interoperability. The Standards 
+Acceleration to Jumpstart the Adoption of Cloud Computing (SAJACC) is an initiative under
+the guidance of NIST 500-293 that is to define ``qualitative testing of specifications 
+against interoperability, security, and portability requirements.''~\cite{hid-sp18-518-NIS
+T-293}
+
 \section{Methodology}
+
+Python libraries exist now that help you abstract your project from  your cloud provider. 
+This may be important if you think you may need to use multiple cloud providers or if you 
+want to ensure you take steps to avoid provider lock-in. There are multiple providers in 
+this space and one of them is Apache Libcloud~\cite{hid-sp18-518-LibCloud} To put it 
+simply, this library allows you to code simple resource  management that is independent 
+of cloud provider specific API calls.
 
 \begin{itemize}
 \item
@@ -144,7 +153,7 @@ management that is independent of cloud provider specific API calls.
   Comparison of command line tools to Python libraries libcloud and boto
 \end{itemize}
 
-\section(Summary}
+\section{Summary}
 
 \section{Scope of work}\label{scope-of-work}
 
