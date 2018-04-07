@@ -176,34 +176,30 @@ this space and one of them is Apache Libcloud~\cite{hid-sp18-518-LibCloud} To pu
 simply, this library allows you to code simple resource  management that is independent 
 of cloud provider specific API calls.
 
-\begin{itemize}
-\item
-  Value Hypothesis
-\item
-  Cycle time metrics on porting a solution without boto/libcloud
-\item
-  Lead time metrics on use of RESTful APIs compared to command line
-  usage
-\item
-  RESTful API
+Our research is intended to prove that their is significant value to leveraging 
+frameworks that provide portability. By comparing the native porting of an application to
+a defined RESTful API, we theorize the porting of a service between cloud providers will
+be more efficient. The combination of open-source portability python libraries, the speed 
+of Swagger, and the standardization of REST will be a combination that will drastically
+improve portability.
 
-  \begin{itemize}
+To determine the effectiveness, we have chosen to measure the cycle time on porting a 
+solution without libcloud to two alternatives, leveraging native libcloud only and then 
+our RESTful implementation of libcloud. Additionally, we will measure the lead time 
+metrics on using a RESTful API compared to the command line python libraries to determine
+if removing the expectation for portability can improve application development speed.
+
+To experiment, we will be leveraging the following.
+
+\begin{itemize}
     \item
     Swagger development to design/build API services for UI
   \item
-    Python development to leverage boto/libcloud
+    Python development to leverage libcloud
   \item
-    Evidence of success porting a solution from/to AWS, Azure, Google
-    Cloud
+    Amazon Web Services, Azure, and Google Cloud
   \end{itemize}
-\item
-  Comparison of porting solution manually to libcloud/boto by command
-  line
-\item
-  Comparison of porting solution with libcloud/boto by commandline to
-  RESTful API solution
-\item
-  Conclusion
+
 \end{itemize}
 
 \section{Results and Discussion}
