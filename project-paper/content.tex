@@ -183,6 +183,22 @@ be more efficient. The combination of open-source portability python libraries, 
 of Swagger, and the standardization of REST will be a combination that will drastically
 improve portability.
 
+The Cloud Security Council has broken cloud portability into five measurable aspects of 
+instruction, syntactic, metadata, behavior and policy. We will leverage the instruction
+aspect, where the correct application instructions are followed when ported, and the 
+syntactic facet where porting between providers is transparent to the end user. This
+implies our testing is more closely aligned with real-world adoption but assumes aspects
+like policy are left unattended.~\cite{hid-sp18-518-Cloud-Council}
+
+The metadata facet deals with the metadata of the application and its artifacts. The metadata typically
+contains specifications for the environmental dependencies for executing the application. The target
+system must be capable of understanding the metadata and acting on it when attempting to execute
+the application. The metadata may need adapting to the capabilities of the target system.
+The behavior facet deals with the functional and non-functional behavior of the application - this is
+typically defined by test suite(s) that check the behavior and ensure that it meets specific expectations.
+If the ported application fails elements of the test suite, then the application code and/or metadata may
+need adjustment.
+
 To determine the effectiveness, we have chosen to measure the cycle time on porting a 
 solution without libcloud to two alternatives, leveraging native libcloud only and then 
 our RESTful implementation of libcloud. Additionally, we will measure the lead time 
@@ -200,16 +216,17 @@ To experiment, we will be leveraging the following.
     Amazon Web Services, Azure, and Google Cloud
   \end{itemize}
 
-\end{itemize}
-
-\section{Results and Discussion}
-
 \begin{itemize}
 \item
   Swagger API documentation
 \item
   Comparison of command line tools to Python libraries libcloud and boto
 \end{itemize}
+
+
+\section{Results and Discussion}
+
+
 
 \section{Summary}
 
