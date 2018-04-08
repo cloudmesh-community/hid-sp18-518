@@ -194,14 +194,23 @@ syntactic facet where porting between providers is transparent to the end user. 
 implies our testing is more closely aligned with real-world adoption but assumes aspects
 like policy are left unattended.~\cite{hid-sp18-518-Cloud-Council}
 
-The metadata facet deals with the metadata of the application and its artifacts. The metadata typically
-contains specifications for the environmental dependencies for executing the application. The target
-system must be capable of understanding the metadata and acting on it when attempting to execute
-the application. The metadata may need adapting to the capabilities of the target system.
-The behavior facet deals with the functional and non-functional behavior of the application - this is
-typically defined by test suite(s) that check the behavior and ensure that it meets specific expectations.
-If the ported application fails elements of the test suite, then the application code and/or metadata may
-need adjustment.
+The instruction facet looks to assess whether the intended target that is being ported to 
+is capable of ``understanding and executing the instructions contained in the executable 
+artifacts of the application.''~\cite{hid-sp18-518-Cloud-Council} This is a strong 
+consideration if you are running code that depends on an underlying runtime environment, 
+especially if it depends on a specific environment such as the difference between Java 
+Runtime 7 or 8. When the porting is poorly executed, it may result in execution failures, 
+poor performance or even worse, the instruction appears to run yet gives inaccurate 
+results that must be found by regression testing.
+
+The syntactic element looks to identify the ease of the solution to alleviate knowledge 
+of the underlying syntax for the cloud provider API or needing to manually convert 
+different unit sizes. This is salient when providers may use custom naming conventions or 
+if the cloud provider expects steps to be executed in a specific fashion. This is also 
+important at higher abstraction layers such as the application data itself, where the 
+``PaaS service may provide instances of databases ready-to-use, in which
+case the actual database(s) provided may be sensitive to the data syntax of the 
+customer data.''~\cite{hid-sp18-518-Cloud-Council}
 
 To determine the effectiveness, we have chosen to measure the cycle time on porting a 
 solution without libcloud to two alternatives, leveraging native libcloud only and then 
