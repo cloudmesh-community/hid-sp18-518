@@ -235,7 +235,9 @@ if the cloud provider expects steps to be executed in a specific fashion. This i
 important at higher abstraction layers such as the application data itself, where the 
 ``PaaS service may provide instances of databases ready-to-use, in which
 case the actual databases provided may be sensitive to the data syntax of the 
-customer data.''~\cite{hid-sp18-518-Cloud-Council}
+customer data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where
+we will highlight issues for cross-platform support in instances where the target 
+provider either does not have API support or libcloud does not support yet.
 
 To determine the effectiveness, we have chosen to measure the cycle time on porting a 
 solution without libcloud to two alternatives, leveraging native libcloud only and then 
