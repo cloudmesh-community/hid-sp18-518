@@ -240,12 +240,6 @@ provider either does not have API support or libcloud does not support yet.
 
 \section{Discussion}
 
-To determine the effectiveness, we have chosen to measure the cycle time on porting a 
-solution without libcloud to two alternatives, leveraging native libcloud only and then 
-our RESTful implementation of libcloud. Additionally, we will measure the lead time 
-metrics on using a RESTful API compared to the command line python libraries to determine
-if removing the expectation for portability can improve application development speed.
-
 To experiment, we leveraged the following resources.
 
 \begin{itemize}
@@ -271,7 +265,15 @@ machine learning."\cite{hid-sp18-518-DataMotion}
   \includegraphics[width=\columnwidth]{images/aws-azure-google.pdf}
   \caption{Provider Comparison}\label{F:comparison}
 \end{figure}
-  
+
+To determine the effectiveness, we have chosen to measure the cycle time on porting a 
+solution without libcloud to two alternatives, leveraging native libcloud only and then 
+our RESTful implementation of libcloud. Additionally, we will measure the lead time 
+metrics on using a RESTful API compared to the command line python libraries to determine
+if removing the expectation for portability can improve application development speed.
+
+\subsection{Use of libcloud library with Python}
+ 
 \section{Results}
 
 Comparison of command line tools to Python libraries libcloud and boto
