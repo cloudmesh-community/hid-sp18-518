@@ -274,17 +274,21 @@ if removing the expectation for portability can improve application development 
 \subsection{Use of libcloud library with Python}
 
 To use the libcloud library in your python environment, you install the apache-libcloud 
-package using the Python package management system, pip. To use libcloud as a library,
-leverage Yython and import libcloud like any other library. A useful feature to use in 
+package using the Python package management system, pip. Libcloud currently supports Python
+versions 2.5, 2.6, 2.7 and Python 3. To use libcloud as a library,
+leverage Python and import libcloud like any other library. A useful feature to use in 
 Python is the help function which will provide you a simple 
 manual on further use of libcloud.
 
 We leveraged libcloud to configure and manage EC2 in AWS. We first needed to configure 
 credentials for an active cloud provider account and then configured libcloud provider 
-to use that account. Next, local variables were defined to store the credentials to be used.
-Once that was set up, we defined the EC2 driver with our region preference, which was 
-AWS us-east-1, the most full featured region. This is because there are additional tasks 
-that must be taken with SSH keys. We used our browser to review EC2 and finalize the setup.
+to use that account. To be able to access AWS S3 from libcloud, we need the access key 
+to be specified in the call. An access key can be setup on AWS console by navigating to 
+My Security credentials, Encryption Keys, and then Access Keys.Next, local variables 
+were defined to store the credentials to be used. Once that was set up, we defined the EC2 
+driver with our region preference, which was AWS us-east-1, the most full featured region. 
+This is because there are additional tasks that must be taken with SSH keys. We used our 
+browser to review EC2 and finalize the setup.
  
 \section{Results}
 
