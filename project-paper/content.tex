@@ -273,97 +273,18 @@ if removing the expectation for portability can improve application development 
 
 \subsection{Use of libcloud library with Python}
 
-\subsubsection{Overview}
-
 To use the libcloud library in your python environment, you install the apache-libcloud 
-package using the Python package management system, pip.
-
-% \texttt{pip\ install\ apache-libcloud}
-
-To use libcloud as a library, open python and import libcloud like below.
-
-% \texttt{python3}
-
-% \texttt{import\ libcloud}
-
-A useful feature to use in Python is the help function which will provide you a simple 
+package using the Python package management system, pip. To use libcloud as a library,
+leverage Yython and import libcloud like any other library. A useful feature to use in 
+Python is the help function which will provide you a simple 
 manual on further use of libcloud.
 
-% \texttt{help(libcloud)}
-
-% \texttt{help(libcloud.compute)}
-
-\subsubsection{Credentials}
-
-To leverage libcloud to configure and manage EC2 in AWS, we first needed to configure 
-credentials for an active cloud provider account and then configure libcloud provider 
-to use that account. Below is an example for AWS.
-
-% \texttt{from\ libcloud.compute.types\ import\ Provider}
-
-% \texttt{from\ libcloud.compute.providers\ import\ get\_driver}
-
-% \texttt{client\ =\ get\_driver(Provider.EC2)}
-
-Next, local variables were defined to store the credentials to be used.
-
-% \texttt{ACCESS\_ID\ =\ \textquotesingle{}\textless{}ENTER\ ACCESS\ ID\ HERE\textgreater{}\textquotesingle{}}
-
-% \texttt{SECRET\_KEY\ =\ \textquotesingle{}\textless{}ENTER\ YOUR\ SECRET\ KEY\ HERE\textgreater{}\textquotesingle{}}
-
+We leveraged libcloud to configure and manage EC2 in AWS. We first needed to configure 
+credentials for an active cloud provider account and then configured libcloud provider 
+to use that account. Next, local variables were defined to store the credentials to be used.
 Once that was set up, we defined the EC2 driver with our region preference, which was 
-AWS us-east-1, the most full featured region.
-
-% \texttt{ec2\_driver\ =\ client(ACCESS\_ID,\ SECRET\_KEY,\ region="us-east-1")}
-
-Testing the connection was done by requesting the available EC2 sizes and
-printing them out using:
-
-% \texttt{print\ (driver.list\_sizes())}
-
-\subsubsection{View EC2 nodes}\label{view-ec2-nodes}
-
-We leveraged the following commands to list out existing EC2 nodes.
-
-% \texttt{nodes\ =\ driver.list\_nodes()}
-
-% \texttt{print(nodes)}
-
-% \texttt{{[}\textless{}Node:\ uuid=ec666f44f5fe597924877a590a3dbdc7a1222e7d,\ state=RUNNING\textgreater{}{]}}
-
-\subsubsection{Create EC2 node}\label{create-ec2-node}
-
-To create a node, we defined the criteria on a type to use.
-
-% \texttt{desired\_size\ =\ \textquotesingle{}t1.micro\textquotesingle{}}
-
-% \texttt{desired\_image\ =\ \textquotesingle{}ami-26ebbc5c\textquotesingle{}}
-
-The next two commands were used to store a local copy of available sizes and
-images, respectively. 
-
-% \texttt{sizes\ =\ driver.list\_sizes()}
-
-% \texttt{images\ =\ driver.list\_images()}
-
-Next, the id was stored in the required format to call create\_node.
-
-% \texttt{size\ =\ {[}s\ for\ s\ in\ sizes\ if\ s.id\ ==\ desired\_size{]}{[}0{]}}
-
-% \texttt{image\ =\ {[}i\ for\ i\ in\ images\ if\ i.id\ ==\ desired\_image{]}{[}0{]}}
-
-To conclude the creation, create\_node was used with our local variables to build a 
-T1.micro Redhat instance.
-
-% \texttt{node\ =\ driver.create\_node(name="IU\ Cloud\ Computing",\ image=image,\ size=size)}
-
-Last, when the node is printed, the status is listed as PENDING. This
-is because there are additional tasks that must be taken with SSH keys. We 
-used our browser to review EC2 and finalize the setup.
-
-% \texttt{print(node)}
-
-% \texttt{\textless{}name=IU\ Cloud\ Computing,\ state=PENDING\textgreater{}}
+AWS us-east-1, the most full featured region. This is because there are additional tasks 
+that must be taken with SSH keys. We used our browser to review EC2 and finalize the setup.
  
 \section{Results}
 
