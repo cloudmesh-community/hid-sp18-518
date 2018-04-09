@@ -8,7 +8,6 @@ machines leveraging libcloud}
 \author{Harshad Pitkar}
 \affiliation{%
   \institution{Indiana University}
-  \streetaddress{Smith Research Center}
   \city{Bloomington} 
   \state{IN} 
   \postcode{47408}
@@ -41,15 +40,15 @@ machines leveraging libcloud}
 
 
 \begin{abstract}
-Our research will measure how the portability of an application is impacted by decisions 
-made early in the software lifecycle when native cloud provider APIs are used. We will 
+Our research measures how the portability of an application is impacted by decisions 
+made early in the software lifecycle when native cloud provider APIs are used. We  
 demonstrate how efforts to leverage scalable, reproducable solutions like boto and 
-libcloud are advantageous. We will derive reproducable code using Swagger and Python
+libcloud are advantageous. We derived reproducable code using Swagger and Python
 to show how libraries like boto and libcloud can be used to migrate an application from 
 one cloud provider to another with a measurable reduction in human error and with less 
-time to execute. Additionally, we will leverage Swagger to develop RESTful APIs to 
-further improve the gains. We will capture the results of the research, share the derived 
-code and conclude how the research can be applied to existing and new development efforts 
+time to execute. Additionally, we leveraged Swagger to develop RESTful APIs to 
+further improve the gains. We captured the results of the research to share the derived 
+code and concluded how the research can be applied to existing and new development efforts 
 intending to leverage cloud providers. 
 \end{abstract}
 
@@ -171,6 +170,32 @@ demand continues to show exponential growth. As Weinman states, the Internet is 
 blend of decades of collaboration, incentives and mistakes and cloud portability will
 likely be the same.
 
+\section{Background on LibCloud}
+
+The concept of LibCloud began in 2009 to address the growing challenge of API diversity
+between the dozens of cloud providers. The effort eventually became a top level Apache 
+project in 2011. LicCloud provides support for the three Cloud providers we tested, 
+Amazon Web Services, Microsoft Azure and Google Cloud and also supports dozens more.
+
+The solution breaks down support between seven primary aspects, which are Compute, 
+Storage, Key Pair Management, Load Balancing, Container, Backups and DNS. The support
+for each aspect varies depending on the native support by the provider and the project
+status. Another important consideration is region support which is typically restrained
+to the primary region. This may limit the usefulness for projects that leverage cloud
+resources globally.
+
+Each aspect has a varying degree of functions available that also may not be fully 
+available to leverage. For example, the supported methods for Compute are fully 
+implemented for EC2 and Azure Virtual Machines yet the deploy node method is not yet
+available for Google Compute Engine. An example that demonstrates the challenge with
+migrating to a newer service provider is key management. Amazon EC2 fully supports all 
+methods for key management yet Azure and Google Cloud Engine do not support even one.
+
+Another challenge is that each cloud provider does not offer a testing platform for the
+use of LibCloud. To test the use of the APIs, you will have to leverage production 
+services to determine the solution works. We leveraged free trials to develop the use 
+of libcloud which is suboptimatal for long-term development.
+
 \section{Methodology}
 
 Python libraries exist now that help you abstract your project from  your cloud provider. 
@@ -209,8 +234,12 @@ different unit sizes. This is salient when providers may use custom naming conve
 if the cloud provider expects steps to be executed in a specific fashion. This is also 
 important at higher abstraction layers such as the application data itself, where the 
 ``PaaS service may provide instances of databases ready-to-use, in which
-case the actual database(s) provided may be sensitive to the data syntax of the 
-customer data.''~\cite{hid-sp18-518-Cloud-Council}
+case the actual databases provided may be sensitive to the data syntax of the 
+customer data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where
+we will highlight issues for cross-platform support in instances where the target 
+provider either does not have API support or libcloud does not support yet.
+
+\section{Discussion}
 
 To determine the effectiveness, we have chosen to measure the cycle time on porting a 
 solution without libcloud to two alternatives, leveraging native libcloud only and then 
@@ -218,7 +247,7 @@ our RESTful implementation of libcloud. Additionally, we will measure the lead t
 metrics on using a RESTful API compared to the command line python libraries to determine
 if removing the expectation for portability can improve application development speed.
 
-To experiment, we will be leveraging the following.
+To experiment, we leveraged the following resources.
 
 \begin{itemize}
     \item
@@ -227,23 +256,15 @@ To experiment, we will be leveraging the following.
     Python development to leverage libcloud
   \item
     Amazon Web Services, Azure, and Google Cloud
+  \item
+    Swagger API documentation
   \end{itemize}
+  
+\section{Results}
 
-\begin{itemize}
-\item
-  Swagger API documentation
-\item
-  Comparison of command line tools to Python libraries libcloud and boto
-\end{itemize}
-
-
-\section{Results and Discussion}
-
-
+Comparison of command line tools to Python libraries libcloud and boto
 
 \section{Summary}
-
-\section{Scope of work}\label{scope-of-work}
 
 \begin{acks}
 
