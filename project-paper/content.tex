@@ -239,13 +239,15 @@ customer data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also
 we will highlight issues for cross-platform support in instances where the target 
 provider either does not have API support or libcloud does not support yet.
 
+\section{Discussion}
+
 To determine the effectiveness, we have chosen to measure the cycle time on porting a 
 solution without libcloud to two alternatives, leveraging native libcloud only and then 
 our RESTful implementation of libcloud. Additionally, we will measure the lead time 
 metrics on using a RESTful API compared to the command line python libraries to determine
 if removing the expectation for portability can improve application development speed.
 
-To experiment, we will be leveraging the following.
+To experiment, we leveraged the following resources.
 
 \begin{itemize}
     \item
@@ -254,23 +256,15 @@ To experiment, we will be leveraging the following.
     Python development to leverage libcloud
   \item
     Amazon Web Services, Azure, and Google Cloud
+  \item
+    Swagger API documentation
   \end{itemize}
+  
+\section{Results}
 
-\begin{itemize}
-\item
-  Swagger API documentation
-\item
-  Comparison of command line tools to Python libraries libcloud and boto
-\end{itemize}
-
-
-\section{Results and Discussion}
-
-
+Comparison of command line tools to Python libraries libcloud and boto
 
 \section{Summary}
-
-\section{Scope of work}\label{scope-of-work}
 
 \begin{acks}
 
