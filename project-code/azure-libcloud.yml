@@ -1,0 +1,287 @@
+swagger: '2.0'
+info:
+  version: 1.0.2
+  title: Cloudmesh
+  description: REST service to manage cloud resources using swagger-2.0 specification and codegen
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: REST Service to manage cloud resources
+  license:
+    name: Apache
+host: 'localhost:8080'
+basePath: /cloudmesh
+schemes:
+  - http
+consumes:
+  - application/json
+  - application/xml
+produces:
+  - application/json
+  - application/xml
+paths:
+  /compute/azure/createvm:
+    get:
+      description: Create a new VM
+      operationId: createvm
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          required: true
+          type: string
+          description: Name of VM
+        - in: query
+          name: size
+          required: true
+          type: string
+          description: Size of VM
+        - in: query
+          name: image_name
+          required: true
+          type: string
+          description: Source Image to create VM
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of the resource group
+        - in: query
+          name: storage_account
+          required: true
+          type: string
+          description: Storage Account
+        - in: query
+          name: network_intf
+          required: true
+          type: string
+          description: Network interface name          
+        - in: query
+          name: blob_container
+          required: true
+          type: string
+          description: Storage blob container name          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/AZUREVM'          
+  /compute/azure/deletevm:
+    get:
+      description: Deletes the virtual machine
+      operationId: deletevm
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of the resource group          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/AZUREVM'
+  /compute/azure/startvm:
+    get:
+      description: Starts the virtual machine
+      operationId: startvm
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of the resource group          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/AZUREVM'
+  /compute/azure/stopvm:
+    get:
+      description: Stops the virtual machine
+      operationId: stopvm
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of the resource group          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/AZUREVM'
+  /compute/azure/listvm:
+    get:
+      description: List all the VM's
+      operationId: listvm
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: VM Details
+          schema:
+            $ref: '#/definitions/AZUREVM'
+  /storage/azure/createVol:
+    get:
+      description: Create Azure Storage Vol
+      operationId: createVol
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+        - in: query
+          name: volsize
+          required: true
+          type: string
+          description: Size of Storage Vol
+        - in: query
+          name: loation
+          required: true
+          type: string
+          description: Locaton or region
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of the resource group
+        - in: query
+          name: ex_account_type
+          required: true
+          type: string
+          description: Storage Account Type
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/AZURESTORAGE'      
+  /storage/azure/createVolSnap:
+    get:
+      description: Create Azure Storage Vol Snapshot
+      operationId: createVolSnap
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+        - in: query
+          name: snapname
+          required: true
+          type: string
+          description: Name of Storage Vol Snapshot
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of Resource Group
+        - in: query
+          name: loation
+          required: true
+          type: string
+          description: Locaton or region
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/AZURESTORAGE'      
+  /storage/azure/deleteVol:
+    get:
+      description: Create Azure Storage Vol
+      operationId: deleteVol
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of Resource Group
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/AZURESTORAGE'      
+  /storage/azure/deleteVolSnap:
+    get:
+      description: Create Azure Storage Vol
+      operationId: delVolsnap
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: snapname
+          required: true
+          type: string
+          description: Name of Storage Volume Snapshot
+        - in: query
+          name: resource_group
+          required: true
+          type: string
+          description: Name of Resource Group
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/AZURESTORAGE'      
+definitions:
+  AZUREVM:
+    type: object
+    properties:
+      vmname:
+        type: string
+      resource_group:
+        type: string
+      vmsize:
+        type: string
+      storage_ccount:
+        type: string        
+      image_name:
+        type: string        
+      network_intf:
+        type: string
+      blob_container:
+        type: string                
+  AZURESTORAGE:
+    type: object
+    properties:
+      volname:
+        type: string
+      volsize:
+        type: integer
+      resource_group:
+        type: string
+      snapname:
+        type: string
