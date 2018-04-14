@@ -193,7 +193,28 @@ use of LibCloud. To test the use of the APIs, you will have to leverage producti
 services to determine the solution works. We leveraged free trials to develop the use 
 of libcloud which is suboptimatal for long-term development.
 
-\section{Background on Boto}
+\section{Background on Boto3}
+
+Boto3 is the underlying technology that powers the command line interface for AWS. It is
+a software development kit that is freely available for customized use if you wish to
+have raw access to the AWS cloud APIs. Underneath boto3 is botocore, which is a framework 
+that can be used to extend into other cloud providers. The concept of a Python SDK for 
+managing cloud services provided in AWS began by Mitch Garnatt in 2006 and has grown 
+exponentially since.~\cite{hid-sp18-518-AWS-boto3}
+
+Botocore itself is driven by JSON blobs that define the feature and its use. This concept 
+makes it easy to integrate into other coding languages and also makes the platform simple 
+to extend. The native instance of boto groups the available features into resources, 
+collections, clients, paginators and waiters. The features in resources  and collections 
+are the core tools that allow you to manipulate and enumerate cloud resources. The other 
+three feature groups are for ease of use for aspects like session management and grouping 
+of data.~\cite{hid-sp18-518-Boto3}
+
+Boto3 strengths also lead to some of its limitations. The library grants in-depth ability 
+to manage AWS resources and is a mature offering that stays current with the rapid pace 
+of AWS feature releases. While AWS features are provided into boto3 for AWS customers, 
+the extensions into other cloud providers is more limited as they are community-driven. 
+This has created a situation where boto3 is more likely to be used solely for AWS.
 
 \section{Methodology}
 
@@ -318,11 +339,11 @@ print d;
 
 \end{figure}
  
-\subsection{Use of boto library with Python}
+\subsection{Use of boto3 library with Python}
 
 \section{Results}
 
-Comparison of command line tools to Python libraries libcloud and boto
+Comparison of command line tools to Python libraries libcloud and boto3
 
 \section{Summary}
 
