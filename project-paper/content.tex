@@ -193,6 +193,8 @@ use of LibCloud. To test the use of the APIs, you will have to leverage producti
 services to determine the solution works. We leveraged free trials to develop the use 
 of libcloud which is suboptimatal for long-term development.
 
+\section{Background on Boto}
+
 \section{Methodology}
 
 Python libraries exist now that help you abstract your project from  your cloud provider. 
@@ -288,7 +290,36 @@ were defined to store the credentials to be used. Once that was set up, we defin
 driver with our region preference, which was AWS us-east-1, the most full featured region. 
 This is because there are additional tasks that must be taken with SSH keys. We used our 
 browser to review EC2 and finalize the setup.
+
+A Python example for leveraging libcloud to list available containers in an AWS S3 
+instance is shown below. The key steps are importing the libraries and leveraging the
+functions that enable connectivity, authentication and authorization. Once that is 
+complete, you can pull or push information using the family of functions that are 
+available in Libcloud for your flavor of cloud provider, in this instance which is AWS.
+
+\begin{figure}[htb]
+
+\begin{verbatim}
+
+from libcloud.storage.types import Provider
+from libcloud.storage.providers import get_driver
+
+
+cls = get_driver(Provider.S3_US_EAST2)
+driver = cls('api key', 'api secret key')
+
+d = driver.list_containers();
+
+print d;
+
+\end{verbatim}
+
+\caption{Leveraging Libcloud \cite{hid-sp18-518-LibCloud}}\label{c:libcloud-example}
+
+\end{figure}
  
+\subsection{Use of boto library with Python}
+
 \section{Results}
 
 Comparison of command line tools to Python libraries libcloud and boto
