@@ -1,0 +1,365 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: "Coludmesh Compute & Storage"
+  description: "A service to use compute and storage resources accross multiple clouds using swagger -2.0 specification and codegen"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    name: "Sushant Athaley"
+  license:
+    name: "Apache"
+host: "localhost:8080"
+basePath: "/cloudmesh"
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /compute/aws/ec2:
+    post:
+      tags:
+      - "vm"
+      summary: "create a new ec2 vm instance"
+      description: ""
+      operationId: "createVm"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "VM object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/AWSVM"
+      responses:
+        200:
+          description: "VM Created"
+        405:
+          description: "Invalid input"
+  /compute/aws/ec2/findByRegion:
+    get:
+      tags:
+      - "vm"
+      description: "Returns list on VMs"
+      operationId: "findByRegion"
+      produces:
+        - "application/json"
+      parameters:
+      - name: "region"
+        in: "query"
+        description: "region"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "VM Instances"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AWSVM"
+  /compute/aws/ec2/{vmname}:
+    get:
+      tags:
+      - "vm"
+      summary: "Find vm by Name"
+      description: "Returns a single vm"
+      operationId: "getVMByName"
+      produces:
+        - "application/json"
+      parameters:
+      - name: "vmname"
+        in: "path"
+        description: "vm name"
+        required: true
+        type: "string"
+      - name: "region"
+        in: "query"
+        description: "region"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AWSVM"
+        400:
+          description: "Invalid name supplied"
+        404:
+          description: "VM not found"
+  /compute/aws/ec2/{vmname}/start:
+    post:
+      tags:
+      - "vm"
+      summary: "start ec2 vm instance"
+      description: ""
+      operationId: "startVm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "vmname"
+        in: "path"
+        description: "vm name"
+        required: true
+        type: "string"
+      - name: "region"
+        in: "formData"
+        description: "region"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "VM Started"
+        405:
+          description: "Invalid input"
+  /compute/aws/ec2/{vmname}/stop:
+    post:
+      tags:
+      - "vm"
+      summary: "stop ec2 vm instance"
+      description: ""
+      operationId: "stopVm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "vmname"
+        in: "path"
+        description: "vm name"
+        required: true
+        type: "string"
+      - name: "region"
+        in: "formData"
+        description: "region"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "VM stopped"
+        405:
+          description: "Invalid input"
+  /compute/aws/ec2/{vmname}/terminate:
+    delete:
+      tags:
+      - "vm"
+      summary: "terminate ec2 vm instance"
+      description: ""
+      operationId: "terminateVm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "vmname"
+        in: "path"
+        description: "vm name"
+        required: true
+        type: "string"
+      - name: "region"
+        in: "formData"
+        description: "region"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "VM terminated"
+        405:
+          description: "Invalid input"
+  /storage/aws/s3/bucket:
+    get:
+      tags:
+      - "s3"
+      description: "Returns list of buckets"
+      operationId: "getBuckets"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Buckets"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AWSS3"
+    post:
+      tags:
+      - "s3"
+      summary: "create bucket"
+      description: "create s3 bucket"
+      operationId: "createBucket"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "formData"
+        description: "s3 bucket name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Bucket Created"
+        405:
+          description: "Invalid input"
+    delete:
+      tags:
+      - "s3"
+      summary: "delete bucket"
+      description: "delete s3 bucket"
+      operationId: "deleteBucket"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "formData"
+        description: "s3 bucket name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Bucket Deleted"
+        405:
+          description: "Invalid input"
+  /storage/aws/s3/{bucketName}:
+    get:
+      tags:
+      - "s3"
+      summary: "list bucket files"
+      description: "list bucket files"
+      operationId: "getFiles"
+      produces:
+        - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "path"
+        description: "bucket name"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "files"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AWSS3"
+        400:
+          description: "Invalid name supplied"
+        404:
+          description: "Bucket not found"
+  /storage/aws/s3/{bucketName}/deleteFile:
+    delete:
+      tags:
+      - "s3"
+      summary: "delete file"
+      description: ""
+      operationId: "deleteFile"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "path"
+        description: "bucket name"
+        required: true
+        type: "string"
+      - name: "fileName"
+        in: "formData"
+        description: "file name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "File Deleted"
+        405:
+          description: "Invalid input"
+  /storage/aws/s3/{bucketName}/uploadFile:
+    post:
+      tags:
+      - "s3"
+      summary: "upload file"
+      description: ""
+      operationId: "uploadFile"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "path"
+        description: "bucket name"
+        required: true
+        type: "string"
+      - name: "fileName"
+        in: "formData"
+        description: "file name"
+        required: true
+        type: "file"
+      responses:
+        200:
+          description: "File uploaded"
+        405:
+          description: "Invalid input"
+  /storage/aws/s3/{bucketName}/downloadFile:
+    get:
+      tags:
+      - "s3"
+      summary: "download file"
+      description: "download file to download directory"
+      operationId: "downloadFile"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bucketName"
+        in: "path"
+        description: "bucket name"
+        required: true
+        type: "string"
+      - name: "fileName"
+        in: "formData"
+        description: "file name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "File downloaded"
+        405:
+          description: "Invalid input"
+definitions:
+  AWSVM:
+    type: "object"
+    properties:
+      vmId:
+        type: "string"
+      name:
+        type: "string"
+      image:
+        type: "string"
+        default: "ami-25615740"
+      region:
+        type: "string"
+        default: "us-east-2"
+      size:
+        type: "string"
+        default: "t2.micro"
+      status:
+        type: "string"
+        description: "VM Status"
+  AWSS3:
+    type: "object"
+    properties:
+      bucketName:
+        type: "string"
+      fileName:
+        type: "string"      
+  
