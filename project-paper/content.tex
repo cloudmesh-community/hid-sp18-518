@@ -302,15 +302,15 @@ leverage Python and import libcloud like any other library. A useful feature to 
 Python is the help function which will provide you a simple 
 manual on further use of libcloud.
 
-We leveraged libcloud to configure and manage EC2 in AWS. We first needed to configure 
-credentials for an active cloud provider account and then configured libcloud provider 
-to use that account. To be able to access AWS S3 from libcloud, we need the access key 
-to be specified in the call. An access key can be setup on AWS console by navigating to 
-My Security credentials, Encryption Keys, and then Access Keys.Next, local variables 
-were defined to store the credentials to be used. Once that was set up, we defined the EC2 
-driver with our region preference, which was AWS us-east-1, the most full featured region. 
-This is because there are additional tasks that must be taken with SSH keys. We used our 
-browser to review EC2 and finalize the setup.
+As an example, we leveraged libcloud to configure and manage EC2 in AWS. We first needed 
+to configure credentials for an active cloud provider account and then configured 
+libcloud provider to use that account. To be able to access AWS S3 from libcloud, we need 
+the access key to be specified in the call. An access key can be setup on AWS console by 
+navigating to My Security credentials, Encryption Keys, and then Access Keys.Next, local 
+variables were defined to store the credentials to be used. Once that was set up, we 
+defined the EC2  driver with our region preference, which was AWS us-east-1, the most 
+full featured region. This is because there are additional tasks that must be taken with 
+SSH keys. We used our browser to review EC2 and finalize the setup.
 
 A Python example for leveraging libcloud to list available containers in an AWS S3 
 instance is shown below. The key steps are importing the libraries and leveraging the
@@ -340,6 +340,87 @@ print d;
 \end{figure}
  
 \subsection{Use of boto3 library with Python}
+
+In order to leverage boto3 within a python console, you simply can install using pip like 
+we have done with libcloud. Boto3 was developed with Python 3 in mind yet backwards 
+compatibility is available to Python 2.7 and 2.6.5. A salient point to stress is that
+boto3 is different than boto, like how Python 2 is different than Python 3. The authors 
+of boto stress that boto3 should be used as boto is only supported for older 
+implementations. The features are similar yet boto will eventually be deprecated and 
+developers will have to migrate to boto3.~\cite{hid-sp18-518-AWS-boto3}
+
+As with all interactions with cloud providers, the aspect of credentials and privileges 
+must be addressed before successful use of the libraries. Since boto3 powers the use of
+the AWS CLI, we found the use of the AWS CLI to be the most effective way to configure 
+credentials. The credential space is shared between boto3 and AWS CLI and there is less 
+error when using the user-friendly AWS CLI. Credentials can be hardcoded as well and 
+examples are provided by Amazon.~\cite{hid-sp18-518-Boto3} The last step that must be 
+taken is define the location you wish boto3 to focus on such as AWS regions. Multi-region 
+support is limited and if you do not define an alternate region, it will use us-east-1.
+
+Below is an example of how we leveraged boto3 to start and stop an instance defined in 
+AWS EC2. The python script is passed two parameters, On or Off, and the instance ID you
+wish to change. The parameters are ultimately passed to boto3 to connect to your EC2 
+instances and perform the action.
+
+\begin{figure}[htb]
+
+\begin{verbatim}
+
+# To start the instance
+$ python boto_ec2.py <on> <instance id>
+
+# To stop the instance
+$ python boto_ec2.py <off> <instance id>
+
+# Add below code to a file named boto_ec2.py
+
+# Code developed in support from the online documentation
+# http://boto3.readthedocs.io/en/latest/guide/ec2-example-managing-instances.html
+
+import sys
+import boto3
+from botocore.exceptions import ClientError
+
+instance_id = sys.argv[2]
+action = sys.argv[1].upper()
+
+ec2 = boto3.client('ec2')
+
+if action == 'ON':
+    # Do a dryrun first to verify permissions
+    try:
+        ec2.start_instances(InstanceIds=[instance_id], DryRun=True)
+    except ClientError as e:
+        if 'DryRunOperation' not in str(e):
+            raise
+
+    # Dry run succeeded, run start_instances without dryrun
+    try:
+        response = ec2.start_instances(InstanceIds=[instance_id], DryRun=False)
+        print(response)
+    except ClientError as e:
+        print(e)
+else:
+    # Do a dryrun first to verify permissions
+    try:
+        ec2.stop_instances(InstanceIds=[instance_id], DryRun=True)
+    except ClientError as e:
+        if 'DryRunOperation' not in str(e):
+            raise
+
+    # Dry run succeeded, call stop_instances without dryrun
+    try:
+        response = ec2.stop_instances(InstanceIds=[instance_id], DryRun=False)
+        print(response)
+    except ClientError as e:
+        print(e)
+
+\end{verbatim}
+
+\caption{Leveraging Boto3 \cite{hid-sp18-518-Boto3}}\label{c:boto3-example}
+
+\end{figure}
 
 \section{Results}
 
