@@ -338,6 +338,24 @@ print d;
 \caption{Leveraging Libcloud \cite{hid-sp18-518-LibCloud}}\label{c:libcloud-example}
 
 \end{figure}
+
+The following table is a breakdown of other functions that were leveraged in Libcloud 
+during our development. The list is tailored towards only what we used directly. If a 
+feature is specific towards a certain cloud provider, as in it was not completely 
+abstracted by Libcloud, the description will point out the customized use.
+ 
+ \begin{table}[h!]
+\caption{LibCloud features leveraged}
+\begin{tabular}{ |p{2cm}||p{5cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{Features} \\
+ \hline
+Function & Description & Command\\
+ \hline
+ Driver	& How to choose the primary cloud provider that will be used by other functions	& libcloud.get\_driver()\\
+  \hline
+ \end{tabular}
+ \end{table}
  
 \subsection{Use of boto3 library with Python}
 
