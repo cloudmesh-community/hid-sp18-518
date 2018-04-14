@@ -1,4 +1,4 @@
-% status: 0
+% status: 20
 % chapter: Virtual Machines
 % 
 \title{RESTful API service to enable portability of virtual machines leveraging libcloud and boto}
@@ -346,13 +346,15 @@ abstracted by Libcloud, the description will point out the customized use.
  
  \begin{table}[h!]
 \caption{LibCloud features leveraged}
-\begin{tabular}{ |p{2cm}||p{5cm}|p{3cm}| }
+\begin{tabular}{ |p{3cm}||p{5cm}|p{3cm}| }
  \hline
  \multicolumn{3}{|c|}{Features} \\
  \hline
 Function & Description & Command\\
  \hline
- Driver	& How to choose the primary cloud provider that will be used by other functions	& libcloud.get\_driver()\\
+ Driver	& How to choose the primary cloud provider that will be used by following functions	& libcloud.get\_driver()\\
+ DNS & Used to configure DNS for compute resources & get\_driver\_dns()\\
+ Load Balancing & Used to configure load balancing for compute resources & get\_driver\_lb()\\
   \hline
  \end{tabular}
  \end{table}
