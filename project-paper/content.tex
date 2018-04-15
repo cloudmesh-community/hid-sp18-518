@@ -229,6 +229,54 @@ provided into boto3 for AWS customers, the extensions into other cloud providers
 is more limited as they are community-driven. This has created a situation where
 boto3 is more likely to be used solely for AWS.
 
+\section{Architecture}
+
+The summary of technologies used were implemented as scripts or markups to
+leverage multiple methods available in libcloud and boto3. The solution was
+optimized to provide a turnkey implementation to easily manage the deployment
+and interaction with resources in three of the primary cloud providers. The
+summation is a deployable Swagger instance that provides a RESTful API to use
+the underlying python scripts which use libcloud and boto3 to interact, all with
+little to no knowledge required by the user.
+
+Since this is a webservice, it provides a capability to access it
+programmatically which is advantageous as multiple VMs can be created within a
+few minutes as compared to manually creating through AWS console which is
+time-consuming if we have to do it in mass. It was helpful also when there is a
+desire to create VMs with the same configuration for multiple users as this
+webservice can be invoked through any program. Default VM configuration can be
+used during creation of a VM and avoid defining configuration for each. It also
+simplifies start, stop and termination of all VMs as a list of VMs can be
+provided for iteration through that list to perform the desired operation. 
+Since it is configuration driven through automation, human error was minimized.
+Our service provided flexibility to work with different clouds(currently 3) and
+scalability to add more cloud implementations. Service will encapsulate various
+cloud implementations regardless of their operating difference and provides a
+one-stop solution.
+
+\subsection{Other technologies used}
+
+\begin{description}
+
+\item{\bf Python.} Python was the underlying language that was used to bridge
+the use of libcloud and boto into the Swagger platform. Multiple scripts were
+written in python that would handle credential handling to the methods that
+would interact with Compute or Storage resources.
+\item{\bf Swagger.} Swagger and Swagger Codegen was used to generate the
+documentation and design to enable a RESTful API implementation of the python
+scripts. \footnote{Swagger was leveraged to implement the REST interfaces to
+align with course content. There are other frameworks available such as Flask or
+Django that were not assessed.}
+\item{\bf Amazon Web Services.} AWS natively supports boto3 which provided
+robust options on what could be delivered via REST. Also, as AWS is the industry
+leader, there is significant open-source development available that provided
+examples of how to use libcloud and boto3.
+\item{\bf Google Cloud.} GCE has an in-depth integration available with
+libcloud. 
+\item{\bf Microsoft Azure.} 
+
+\end{description}
+
 \section{Methodology}
 
 Python libraries exist now that help you abstract your project from  your cloud
