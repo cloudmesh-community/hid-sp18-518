@@ -417,7 +417,7 @@ customized use.
  
  \begin{table}[h!]
 \caption{LibCloud features leveraged}
-\begin{tabular}{ |p{3cm}||p{5cm}|p{3cm}| }
+\begin{tabular}{ |p{4cm}||p{5cm}|p{4cm}| }
  \hline
  \multicolumn{3}{|c|}{Features} \\
  \hline
@@ -425,9 +425,21 @@ Function & Description & Command\\
  \hline
  Driver	& How to choose the primary cloud provider that will be used by
 following functions	& libcloud.get\_driver()\\
- DNS & Used to configure DNS for compute resources & get\_driver\_dns()\\
- Load Balancing & Used to configure load balancing for compute resources &
-get\_driver\_lb()\\
+ DNS & Used to configure DNS for compute resources & dns()\\
+ Load Balancing & Used to configure load balancing for compute resources & get\_driver\_lb()\\
+ Node listing & & list\_nodes()\\
+ Size listing & & list\_sizes()\\
+ Image listing & & list\_images()\\
+ Get Image ID & & get\_image(\\
+ Get Node ID & & ex\_get\_node()\\
+ Create new node & & create\_node()\\
+ Start a node & & ex\_start\_node()\\
+ Stop a node & & ex\_stop\_node()\\
+ Destroy a node & & destroy\_node()\\
+ Get Volume ID & & ex\_get\_volume()\\
+ Create new volume & & create\_volume()\\
+ Create new snapshot & & create\_volume\_snapshot()\\
+ Destroy a volume or snapshot & & destroy\_volume()\\
   \hline
  \end{tabular}
  \end{table}
