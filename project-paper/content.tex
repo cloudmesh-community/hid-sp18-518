@@ -337,6 +337,7 @@ To experiment, we leveraged the following resources.
  
 \end{itemize}
 
+
 To reflect on the three cloud providers chosen, the results were expected to
 skew towards the strengths and weaknesses of each provider. AWS is considered
 the most mature provider with a very deep API offering where solutions like
@@ -385,6 +386,8 @@ authorization. Once that is complete, you can pull or push information using the
 family of functions that are available in Libcloud for your flavor of cloud
 provider, in this instance which is AWS.
 
+
+
 \begin{figure}[htb]
 
 \begin{verbatim}
@@ -413,19 +416,20 @@ directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
  
+\begin{verbatim}
  \begin{table}[h!]
 \caption{LibCloud features leveraged}
-\begin{tabular}{ |p{4cm}||p{5cm}|p{4cm}| }
+\begin{tabular}{|p{4cm}||p{5cm}|p{4cm}|}
  \hline
  \multicolumn{3}{|c|}{Features} \\
  \hline
 Function & Description & Command\\
  \hline
- Driver	& How to choose the primary cloud provider that will be used by
-following functions	& libcloud.get\_driver()\\
- DNS & Used to configure DNS for compute resources & dns()\\
+ Driver	& How to choose the primary cloud provider that will be used
+          by following functions	& \verb|libcloud.get_driver()|\\
+ DNS & Used to configure DNS for compute resources & \verb|dns()|\\
  Load Balancing & Used to configure load balancing for compute resources & get\_driver\_lb()\\
- Node listing & & list\_nodes()\\
+ Node listing &  & list\_nodes()\\
  Size listing & & list\_sizes()\\
  Image listing & & list\_images()\\
  Get Image ID & & get\_image(\\
@@ -441,6 +445,12 @@ following functions	& libcloud.get\_driver()\\
   \hline
  \end{tabular}
  \end{table}
+
+\end{verbatim}
+
+
+
+
  
 \subsection{Use of boto3 library with Python}
 
