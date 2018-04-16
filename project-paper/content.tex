@@ -87,7 +87,7 @@ Figure~\ref{F:arch}.
   \caption{Project Architecture}\label{F:arch}
 \end{figure}
 
-\section{Literature Review}
+\section{Technology Review}
 
 The National Institute of Standards and Technology defines cloud  portability as
 ``data that can be moved from one cloud system to another and that  applications
@@ -254,7 +254,10 @@ scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
 
-\subsection{Other technologies used}
+\section{Other technologies used}
+The other technologies leveraged for implementation are listed below. The
+solution leverages these technologies yet the paper does not describe their
+use in detail.
 
 \begin{description}
 
@@ -324,7 +327,7 @@ data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where we
 will highlight issues for cross-platform support in instances where the target
 provider either does not have API support or libcloud does not support yet.
 
-\section{Discussion}
+\section{Benchmarking}
 
 To experiment, we leveraged the following resources.
 
@@ -359,7 +362,7 @@ will measure the lead time metrics on using a RESTful API compared to the
 command line python libraries to determine if removing the expectation for
 portability can improve application development speed.
 
-\subsection{Use of libcloud library with Python}
+\subsection{Benchmarking of libcloud library with Python}
 
 To use the libcloud library in your python environment, you install the
 apache-libcloud package using the Python package management system, pip.
@@ -452,7 +455,7 @@ Function & Description & Command\\
 
 
  
-\subsection{Use of boto3 library with Python}
+\subsection{Benchmarking of boto3 library with Python}
 
 In order to leverage boto3 within a python console, you simply can install using
 pip like we have done with libcloud. Boto3 was developed with Python 3 in mind
@@ -543,6 +546,8 @@ else:
 Comparison of command line tools to Python libraries libcloud and boto3
 
 \section{Summary}
+
+\section{Artifacts}
 
 \begin{acks}
 
