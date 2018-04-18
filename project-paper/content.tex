@@ -267,16 +267,17 @@ written in python that would handle credential handling to the methods that
 would interact with Compute or Storage resources.
 \item{\bf Swagger.} Swagger and Swagger Codegen was used to generate the
 documentation and design to enable a RESTful API implementation of the python
-scripts. \footnote{Swagger was leveraged to implement the REST interfaces to
+scripts. Swagger was leveraged to implement the REST interfaces to
 align with course content. There are other frameworks available such as Flask or
-Django that were not assessed.}
+Django that were not assessed.
 \item{\bf Amazon Web Services.} AWS natively supports boto3 which provided
 robust options on what could be delivered via REST. Also, as AWS is the industry
 leader, there is significant open-source development available that provided
 examples of how to use libcloud and boto3.
 \item{\bf Google Cloud.} GCE has an in-depth integration available with
-libcloud. 
-\item{\bf Microsoft Azure.} 
+libcloud and Apache provides very detailed examples on how to use libcloud.
+\item{\bf Microsoft Azure.} Azure is not natively supported by libcloud or boto3
+yet libcloud has extensive support for most of the available API calls.
 
 \end{description}
 
@@ -419,20 +420,22 @@ directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
  
-\begin{verbatim}
- \begin{table}[h!]
+\begin{table}[]
+\centering
 \caption{LibCloud features leveraged}
-\begin{tabular}{|p{4cm}||p{5cm}|p{4cm}|}
+\label{t:libcloud-table}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll}
  \hline
  \multicolumn{3}{|c|}{Features} \\
  \hline
 Function & Description & Command\\
  \hline
- Driver	& How to choose the primary cloud provider that will be used
-          by following functions	& \verb|libcloud.get_driver()|\\
- DNS & Used to configure DNS for compute resources & \verb|dns()|\\
+ Driver	& How to choose the primary cloud provider that will be used by
+following functions	& libcloud.get\_driver()\\
+ DNS & Used to configure DNS for compute resources & dns()\\
  Load Balancing & Used to configure load balancing for compute resources & get\_driver\_lb()\\
- Node listing &  & list\_nodes()\\
+ Node listing & & list\_nodes()\\
  Size listing & & list\_sizes()\\
  Image listing & & list\_images()\\
  Get Image ID & & get\_image(\\
@@ -446,15 +449,10 @@ Function & Description & Command\\
  Create new snapshot & & create\_volume\_snapshot()\\
  Destroy a volume or snapshot & & destroy\_volume()\\
   \hline
- \end{tabular}
+ \end{tabular}%
+ }
  \end{table}
 
-\end{verbatim}
-
-
-
-
- 
 \subsection{Benchmarking of boto3 library with Python}
 
 In order to leverage boto3 within a python console, you simply can install using
