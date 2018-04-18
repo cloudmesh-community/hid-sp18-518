@@ -15,9 +15,21 @@ try:
     aws_default_region = cred['aws']['DEFAULT_REGION']
     aws_default_ami = cred['aws']['DEFAULT_AMI']
     download_dir = cred['aws']['DOWNLOAD_DIR']
+    
+    azure_tenant_id = cred['azure']['tenant_id']
+    azure_subscription_id = cred['azure']['subscription_id']
+    azure_key = cred['azure']['key']
+    azure_default_region = cred['azure']['DEFAULT_REGION']
+    azure_secret = cred['azure']['secret']
+    
     if aws_access_id == "TBD" or aws_secret_key=="TBD":
         logging.error('Please save aws credetials in credentials.yml')
         sys.exit(1)
+        
+    if azure_tenant_id == "TBD" or azure_subscription_id == "TBD":
+        logging.error('Please save azure credetials in credentials.yml')
+        sys.exit(1)
+        
 except OSError:
     logging.error('Please create credentials.yml with credential info')
     sys.exit(1) 
@@ -41,3 +53,17 @@ def getAWSDefAMI():
 def getDownloadDir():
     return download_dir
 
+def getAZUREtenantID():
+    return azure_tenant_id
+
+def getAZURESubscriptionid():
+    return azure_subscription_id
+
+def getAZUREkey():
+    return azure_key
+
+def getAZUREDefRegion():
+    return azure_default_region
+
+def getAZUREsecret():
+    return azure_secret
