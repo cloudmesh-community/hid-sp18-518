@@ -468,7 +468,9 @@ paths:
         '200':
           description: VM Details
           schema:
-            $ref: '#/definitions/AZUREVM'
+            type: "array"
+            items:
+              $ref: '#/definitions/AZUREVM'
   /storage/azure/createVol:
     get:
       tags:
@@ -589,7 +591,214 @@ paths:
         '200':
           description: Storage Volume
           schema:
-            $ref: '#/definitions/AZURESTORAGE'        
+            $ref: '#/definitions/AZURESTORAGE'
+  /compute/google/createvm:
+    get:
+      tags:
+      - "googleVM"
+      description: Create a new VM
+      operationId: createGoogleVM
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          required: true
+          type: string
+          description: Name of VM
+        - in: query
+          name: size
+          required: true
+          type: string
+          description: Size of VM
+        - in: query
+          name: image_name
+          required: true
+          type: string
+          description: Source Image to create VM
+        - in: query
+          name: location
+          required: true
+          type: string
+          description: Name of the location/region
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/GOOGLEVM'          
+  /compute/google/deletevm:
+    get:
+      tags:
+      - "googleVM"
+      description: Deletes the virtual machine
+      operationId: deleteGoogleVM
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+        - in: query
+          name: location
+          required: true
+          type: string
+          description: Name of the vm location          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/GOOGLEVM'
+  /compute/google/startvm:
+    get:
+      tags:
+      - "googleVM"
+      description: Starts the virtual machine
+      operationId: startGoogleVM
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/GOOGLEVM'
+  /compute/google/stopvm:
+    get:
+      tags:
+      - "googleVM"
+      description: Stops the virtual machine
+      operationId: stopGoogleVM
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: vmname
+          required: true
+          type: string
+          description: Name of the VM          
+        - in: query
+          name: location
+          required: true
+          type: string
+          description: Name of the VM location          
+      responses:
+        '200':
+          description: Status
+          schema:
+            $ref: '#/definitions/GOOGLEVM'
+  /compute/google/listvm:
+    get:
+      tags:
+      - "googleVM"
+      description: List all the VM's
+      operationId: listGoogleVM
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: VM Details
+          schema:
+            type: "array"
+            items:
+              $ref: '#/definitions/GOOGLEVM'
+  /storage/google/createVol:
+    get:
+      tags:
+      - "googleStorage"
+      description: Create google Storage Vol
+      operationId: createGoogleVol
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+        - in: query
+          name: volsize
+          required: true
+          type: string
+          description: Size of Storage Vol
+        - in: query
+          name: location
+          required: true
+          type: string
+          description: Locaton or region
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/GOOGLESTORAGE'      
+  /storage/google/createVolSnap:
+    get:
+      tags:
+      - "googleStorage"
+      description: Create google Storage Vol Snapshot
+      operationId: createGoogleVolSnap
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+        - in: query
+          name: snapname
+          required: true
+          type: string
+          description: Name of Storage Vol Snapshot
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/GOOGLESTORAGE'      
+  /storage/google/deleteVol:
+    get:
+      tags:
+      - "googleStorage"
+      description: Delete google Storage Vol
+      operationId: deleteGoogleVol
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: volname
+          required: true
+          type: string
+          description: Name of Storage Volume
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/GOOGLESTORAGE'      
+  /storage/google/deleteVolSnap:
+    get:
+      tags:
+      - "googleStorage"
+      description: Delete google Storage Vol snap
+      operationId: delGoogleVolsnap
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: snapname
+          required: true
+          type: string
+          description: Name of Storage Volume Snapshot
+      responses:
+        '200':
+          description: Storage Volume
+          schema:
+            $ref: '#/definitions/GOOGLESTORAGE'
 definitions:
   AWSVM:
     type: "object"
@@ -635,6 +844,34 @@ definitions:
       blob_container:
         type: string                
   AZURESTORAGE:
+    type: object
+    properties:
+      volname:
+        type: string
+      volsize:
+        type: integer
+      resource_group:
+        type: string
+      snapname:
+        type: string
+  GOOGLEVM:
+    type: object
+    properties:
+      vmname:
+        type: string
+      resource_group:
+        type: string
+      vmsize:
+        type: string
+      storage_ccount:
+        type: string        
+      image_name:
+        type: string        
+      network_intf:
+        type: string
+      blob_container:
+        type: string                
+  GOOGLESTORAGE:
     type: object
     properties:
       volname:
