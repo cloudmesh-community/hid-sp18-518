@@ -124,7 +124,7 @@ example, AWS Lambda, which is a FaaS solution, is highly specialized and the
 APIs in use are specific to that vendor. While solutions like libcloud and boto
 attempt to include all providers, the speed of the market makes it challenging
 for portability libraries to include the latest and great cloud provider
-offerings.~\cite{hid-sp18-518-LibCloud} Another dependency is the complexity of
+offerings~\cite{hid-sp18-518-LibCloud}. Another dependency is the complexity of
 what needs to be ported. IaaS is the closest cloud offering to bare-metal and
 dependencies for hardware-specific requirements are not a consideration for most
 portability offerings. As the adoption of containers and functions increases,
@@ -431,20 +431,34 @@ Function & Description & Command\\
  Driver	& How to choose the primary cloud provider that will be used by
 following functions	& \verb|libcloud.get\_driver()|\\
  DNS & Used to configure DNS for compute resources & \verb|dns()|\\
- Load Balancing & Used to configure load balancing for compute resources & \verb|get\_driver\_lb()|\\
- Node listing & Used to enumerate the nodes already created within the cloud provider & \verb|list\_nodes()|\\
- Size listing & Used to enumerate the size of the VM and supporting components & \verb|list\_sizes()|\\
- Image listing & Used to enumerate the avaiable, deployable images the cloud provider makes available & \verb|list\_images()|\\
- Get Image ID & Used to pull the unique identifier for the human-readable name for the chosen image & \verb|get\_image()|\\
- Get Node ID & Used to pull the unique identifier for one or many VMs & \verb|ex\_get\_node()|\\
- Create new node & Used in conjuection with image listing to deploy a new VM & \verb|create\_node()|\\
- Start a node & Used to tell a previously built VM to boot & \verb|ex\_start\_node()|\\
- Stop a node & Used to direct a VM to begin shutdown gracefully & \verb|ex\_stop\_node()|\\
- Destroy a node & Used to delete a VM and will return success & \verb|destroy\_node()|\\
- Get Volume ID & Used to enumerate the unique identifier for cloud storage typically used by a VM & \verb|ex\_get\_volume()|\\
- Create new volume & Used to add addtional storage to a VM & \verb|create\_volume()|\\
- Create new snapshot & Used to take a recovery image of a VM for restoration purposes & \verb|create\_volume\_snapshot()|\\
- Destroy a volume or snapshot & Used to delete storage or snapshot to recover storage space & \verb|destroy\_volume()|\\
+ Load Balancing & Used to configure load balancing for compute resources &
+\verb|get\_driver\_lb()|\\
+ Node listing & Used to enumerate the nodes already created within the cloud
+provider & \verb|list\_nodes()|\\
+ Size listing & Used to enumerate the size of the VM and supporting components &
+\verb|list\_sizes()|\\
+ Image listing & Used to enumerate the avaiable, deployable images the cloud
+provider makes available & \verb|list\_images()|\\
+ Get Image ID & Used to pull the unique identifier for the human-readable name
+for the chosen image & \verb|get\_image()|\\
+ Get Node ID & Used to pull the unique identifier for one or many VMs &
+\verb|ex\_get\_node()|\\
+ Create new node & Used in conjuection with image listing to deploy a new VM &
+\verb|create\_node()|\\
+ Start a node & Used to tell a previously built VM to boot &
+\verb|ex\_start\_node()|\\
+ Stop a node & Used to direct a VM to begin shutdown gracefully &
+\verb|ex\_stop\_node()|\\
+ Destroy a node & Used to delete a VM and will return success &
+\verb|destroy\_node()|\\
+ Get Volume ID & Used to enumerate the unique identifier for cloud storage
+typically used by a VM & \verb|ex\_get\_volume()|\\
+ Create new volume & Used to add addtional storage to a VM &
+\verb|create\_volume()|\\
+ Create new snapshot & Used to take a recovery image of a VM for restoration
+purposes & \verb|create\_volume\_snapshot()|\\
+ Destroy a volume or snapshot & Used to delete storage or snapshot to recover
+storage space & \verb|destroy\_volume()|\\
   \bottomrule
  \end{tabular}%
  }
@@ -535,6 +549,8 @@ else:
 \caption{Leveraging Boto3~\cite{hid-sp18-518-Boto3}}\label{c:boto3-example}
 
 \end{figure}
+
+Once boto3 is imported, the object ec2 is 
 
 \section{Results}
 
