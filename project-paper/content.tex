@@ -418,39 +418,6 @@ directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
  
-<<<<<<< HEAD
-\begin{verbatim}
- 
- % Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-\begin{table}[]
-\centering
-\caption{LibCloud features leveraged}
-\label{LibCloud features leveraged}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lll}
-\multicolumn{3}{l}{} \\
-Function & Description & Command\\
- Driver	& How to choose the primary cloud provider that will be used by following functions	& \verb|libcloud.get_driver()|\\
- DNS & Used to configure DNS for compute resources & \verb|dns()|\\
- Load Balancing & Used to configure load balancing for compute resources & \verb|get\_driver\_lb()\\
- Node listing &  & \verb|list\_nodes()\\
- Size listing & & \verb|list\_sizes()\\
- Image listing & & \verb|list\_images()\\
- Get Image ID & & \verb|get\_image(\\
- Get Node ID & & \verb|ex\_get\_node()\\
- Create new node & & \verb|create\_node()\\
- Start a node & & \verb|ex\_start\_node()\\
- Stop a node & & \verb|ex\_stop\_node()\\
- Destroy a node & & \verb|destroy\_node()\\
- Get Volume ID & & \verb|ex\_get\_volume()\\
- Create new volume & & \verb|create\_volume()\\
- Create new snapshot & & \verb|create\_volume\_snapshot()\\
- Destroy a volume or snapshot & & \verb|destroy\_volume()  
-\end{tabular}%
-}
-\end{table}
-=======
 \begin{table}[]
 \centering
 \caption{LibCloud features leveraged}
@@ -483,7 +450,6 @@ following functions	& libcloud.get\_driver()\\
  \end{tabular}%
  }
  \end{table}
->>>>>>> 70214c5c5f9e401b724a96902dbd805866b58de0
 
 \subsection{Benchmarking of boto3 library with Python}
 
