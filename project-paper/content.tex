@@ -430,22 +430,22 @@ customized use.
 Function & Description & Command\\
  \hline
  Driver	& How to choose the primary cloud provider that will be used by
-following functions	& libcloud.get\_driver()\\
- DNS & Used to configure DNS for compute resources & dns()\\
- Load Balancing & Used to configure load balancing for compute resources & get\_driver\_lb()\\
- Node listing & Used to enumerate the nodes already created within the cloud provider & list\_nodes()\\
- Size listing & Used to enumerate the size of the VM and supporting components & list\_sizes()\\
- Image listing & Used to enumerate the avaiable, deployable images the cloud provider makes available & list\_images()\\
- Get Image ID & Used to pull the unique identifier for the human-readable name for the chosen image & get\_image(\\
- Get Node ID & Used to pull the unique identifier for one or many VMs & ex\_get\_node()\\
- Create new node & Used in conjuection with image listing to deploy a new VM & create\_node()\\
- Start a node & Used to tell a previously built VM to boot & ex\_start\_node()\\
- Stop a node & Used to direct a VM to begin shutdown gracefully & ex\_stop\_node()\\
- Destroy a node & Used to delete a VM and will return success & destroy\_node()\\
- Get Volume ID & Used to enumerate the unique identifier for cloud storage typically used by a VM & ex\_get\_volume()\\
- Create new volume & Used to add addtional storage to a VM & create\_volume()\\
- Create new snapshot & Used to take a recovery image of a VM for restoration purposes & create\_volume\_snapshot()\\
- Destroy a volume or snapshot & Used to delete storage or snapshot to recover storage space & destroy\_volume()\\
+following functions	& \verb|libcloud.get\_driver()|\\
+ DNS & Used to configure DNS for compute resources & \verb|dns()|\\
+ Load Balancing & Used to configure load balancing for compute resources & \verb|get\_driver\_lb()|\\
+ Node listing & Used to enumerate the nodes already created within the cloud provider & \verb|list\_nodes()|\\
+ Size listing & Used to enumerate the size of the VM and supporting components & \verb|list\_sizes()|\\
+ Image listing & Used to enumerate the avaiable, deployable images the cloud provider makes available & \verb|list\_images()|\\
+ Get Image ID & Used to pull the unique identifier for the human-readable name for the chosen image & \verb|get\_image()|\\
+ Get Node ID & Used to pull the unique identifier for one or many VMs & \verb|ex\_get\_node()|\\
+ Create new node & Used in conjuection with image listing to deploy a new VM & \verb|create\_node()|\\
+ Start a node & Used to tell a previously built VM to boot & \verb|ex\_start\_node()|\\
+ Stop a node & Used to direct a VM to begin shutdown gracefully & \verb|ex\_stop\_node()|\\
+ Destroy a node & Used to delete a VM and will return success & \verb|destroy\_node()|\\
+ Get Volume ID & Used to enumerate the unique identifier for cloud storage typically used by a VM & \verb|ex\_get\_volume()|\\
+ Create new volume & Used to add addtional storage to a VM & \verb|create\_volume()|\\
+ Create new snapshot & Used to take a recovery image of a VM for restoration purposes & \verb|create\_volume\_snapshot()|\\
+ Destroy a volume or snapshot & Used to delete storage or snapshot to recover storage space & \verb|destroy\_volume()|\\
   \hline
  \end{tabular}%
  }
