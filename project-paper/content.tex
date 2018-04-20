@@ -247,7 +247,7 @@ used during creation of a VM and avoid defining configuration for each. It also
 simplifies start, stop and termination of all VMs as a list of VMs can be
 provided for iteration through that list to perform the desired operation. 
 Since it is configuration driven through automation, human error was minimized.
-Our service provided flexibility to work with different clouds(currently 3) and
+Our service provided flexibility to work with different clouds (currently 3) and
 scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
@@ -408,7 +408,7 @@ print d;
 \end{verbatim}
 
 \caption{Leveraging Libcloud
-\cite{hid-sp18-518-LibCloud}}\label{c:libcloud-example}
+~\cite{hid-sp18-518-LibCloud}}\label{c:libcloud-example}
 
 \end{figure}
 
@@ -420,15 +420,14 @@ customized use.
  
 \begin{table}[]
 \centering
-\caption{LibCloud features leveraged}
-\label{t:libcloud-table}
+\caption{LibCloud features leveraged}\label{t:libcloud-table}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lll}
- \hline
+ \toprule
  \multicolumn{3}{|c|}{Features} \\
- \hline
+ \midrule
 Function & Description & Command\\
- \hline
+ \midrule
  Driver	& How to choose the primary cloud provider that will be used by
 following functions	& \verb|libcloud.get\_driver()|\\
  DNS & Used to configure DNS for compute resources & \verb|dns()|\\
@@ -446,7 +445,7 @@ following functions	& \verb|libcloud.get\_driver()|\\
  Create new volume & Used to add addtional storage to a VM & \verb|create\_volume()|\\
  Create new snapshot & Used to take a recovery image of a VM for restoration purposes & \verb|create\_volume\_snapshot()|\\
  Destroy a volume or snapshot & Used to delete storage or snapshot to recover storage space & \verb|destroy\_volume()|\\
-  \hline
+  \bottomrule
  \end{tabular}%
  }
  \end{table}
