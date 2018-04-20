@@ -550,10 +550,19 @@ else:
 
 \end{figure}
 
-Once boto3 is imported, the object ec2 is 
+Once boto3 is imported, the object ec2 is leveraged for ease of use. The client
+method is defined with the intended cloud provider environment, in this case it
+is AWS EC2. The calls in Python using the variable are then vendor agnostic. For
+the methods for starting and stopping instances, boto3 allows the author to
+follow a common syntax structure that will map the parameters into the
+underlying vendor API calls. Last, boto3 will capture the returned output
+provided by the vendor and will make it available for your use. In this python
+script, we have captured the response into a variable for later use and to show
+that it works as defined, the output is sent to the console.
 
 \section{Results}
 
+Review the code developed
 Comparison of command line tools to Python libraries libcloud and boto3
 
 \section{Summary}
