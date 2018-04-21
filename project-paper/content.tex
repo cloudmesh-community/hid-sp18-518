@@ -669,12 +669,27 @@ virtual machine was created and also used to enhance the message sent back to
 the user.
 
 \section{Results}
-Review the code developed
+We had success leverage libcloud to generate and control the execution of cloud
+resources with Amazon Web Services and Microsoft Azure. We were able to abstract
+away from native API calls for a cloud provider. Additionally, we were able to
+map the Python scripts leveraging libcloud into RESTful APIs that were
+well-documented leveraging Swagger. The solutions combined to provide a solution
+that hides the intricacies of knowing how to use each vendor's API and the
+verbiage they use to explain different types of cloud resources.  
 
+The use of boto3 became challenging in relation to Google Cloud. In concurrency
+with what the technology review stressed, the use of proprietary utilities like
+gsutil limited what we can develop. Boto3 development was successful with AWS
+resources yet at boto3 is the underlying technology for AWS utilities, the
+value-add was limited to converting boto3 calls for AWS into a RESTful API.
+
+Other Successes
+
+Other Challenges
 
 Comparison of command line tools to Python libraries libcloud and boto3
 
-\section{Summary}
+\section{Conclusion}
 
 \section{Artifacts}
 
