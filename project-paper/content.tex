@@ -74,7 +74,7 @@ Additionally, attempts to abstract away from cloud providers are helpful yet
 their non-standardization still potentially locks you into the solutions
 provided by Apache or communities like boto. We will deliver a continuation of
 that abstraction concept with an accepted standard, REST, to extend libcloud and
-boto. By leveraging REST, we intend to introduce a standardized implementation
+boto. By leveraging REST, we introduced a standardized implementation
 that leverages cloud portability libraries to manage the diversity of cloud
 applications. A high-level abstract of the concept is shown in
 Figure~\ref{F:arch}.
@@ -560,9 +560,43 @@ provided by the vendor and will make it available for your use. In this python
 script, we have captured the response into a variable for later use and to show
 that it works as defined, the output is sent to the console.
 
-\section{Results}
+\section{Use Case: Rest API calls}
 
+\begin{figure}[htb]
+
+The final outcome of the code development was an ability to leverage an HTTP
+call to request usage of cloud services. For example, below is a sample of an
+API call where elements are passed with POST to provide the parameters needed
+for libcloud or boto to initiate the call. When the call is completed, the API
+returns a string on what was requests. The parameters are sent in JSON format
+and are extensible into other platforms. Some feature enhancements for the REST
+API call would be error handling if libcloud or boto have issues executing the
+call.  
+
+\begin{verbatim}
+curl -X POST "http://localhost:8080/cloudmesh/compute/aws/ec2" -H  "accept:
+application/json" -H  "Content-Type: application/json" -d "{  \"vmId\": \"NA\", 
+\"name\": \"myVM\",  \"image\": \"ami-25615740\",  \"region\": \"us-east-2\", 
+\"size\": \"t2.micro\",  \"status\": \"NA\"}"
+\end{verbatim}
+
+\caption{REST API call example}\label{c:REST-example}
+\end{figure}
+
+
+By leveraging an HTTP call allows, we have created an opportunity to extend the
+solution for automation or to provide a browser-based user experience. Both of
+those types of solutions would improve the scalability of what can be done
+compared to cloud provider UI or the provided command-line tools. Both solutions
+are also less prone to error by incorrect data entry or mistakes by overly broad
+permissions. 
+
+
+
+\section{Results}
 Review the code developed
+
+
 Comparison of command line tools to Python libraries libcloud and boto3
 
 \section{Summary}
