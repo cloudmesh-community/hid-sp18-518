@@ -619,7 +619,10 @@ Additionally, it is automated and the accuracy is complete compared to a manual
 effort to capture how to use the RESTful API to call libcloud or boto3.
 
 The API call maps to the following Python script which would build a virtual
-machine.
+machine. The method requires multiple parameters that are mapped into the
+RESTful API calls. The JSON blob would pass the paramenters into the Python
+script to leverage the \verb|get\_image| and \verb|create\_node| features in
+libcloud.
 
 \begin{figure}[htb]
 \begin{verbatim}
@@ -656,6 +659,14 @@ ex_network=nw_intf,ex_blob_container=blob_container)
 
 \caption{Python script example}\label{c:Python-example}
 \end{figure}
+
+The error handling by the script provides the user feedback on what happened and
+how to resolve. A future enhancement would be to map the method return back to
+the RESTful API and the error could be presented to the user in the user
+interface they are using to leverage the API. When the method works correctly,
+the parameters passed into the method could be leveraged to confirm the correct
+virtual machine was created and also used to enhance the message sent back to
+the user.
 
 \section{Results}
 Review the code developed
