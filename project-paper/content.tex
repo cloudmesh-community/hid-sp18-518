@@ -429,16 +429,27 @@ customized use.
 Function & Description & Command\\
  \midrule
  Driver	& How to choose the primary cloud provider that will be used by
-following functions	& \verb|libcloud.get\_driver()|\\
- DNS & Used to configure DNS for compute resources & \verb|dns()|\\
- Load Balancing & Used to configure load balancing for compute resources &
+following functions. We leveraged Amazon Web Services, Microsoft Azure and
+Google Cloud as targets for this method. & \verb|libcloud.get\_driver()|\\
+ DNS & Used to configure DNS for compute resources. This is an example of a
+late-stage call to further define how a virtual machine should be configured. &
+\verb|dns()|\\
+ Load Balancing & Used to configure load balancing for compute resources. This
+field is a great example of the power of cloud computing and RESTful API as
+redundant, highly available virtual machines can be built quickly and if you
+choose, by default. &
 \verb|get\_driver\_lb()|\\
  Node listing & Used to enumerate the nodes already created within the cloud
-provider & \verb|list\_nodes()|\\
- Size listing & Used to enumerate the size of the VM and supporting components &
+provider. This call can be automated to routinely audit usage of virtual
+machines to identify trends for usage. & \verb|list\_nodes()|\\
+ Size listing & Used to enumerate the size of the VM and supporting components.
+This method is commonly used to reduce costs and identify VMs that may have
+grown beyond a comfortable level. &
 \verb|list\_sizes()|\\
  Image listing & Used to enumerate the avaiable, deployable images the cloud
-provider makes available & \verb|list\_images()|\\
+provider makes available. This parameter is typically used before a call to
+generate a virtual machine to ensure the image is still provided by the cloud
+provider. & \verb|list\_images()|\\
  Get Image ID & Used to pull the unique identifier for the human-readable name
 for the chosen image & \verb|get\_image()|\\
  Get Node ID & Used to pull the unique identifier for one or many VMs &
@@ -449,7 +460,12 @@ for the chosen image & \verb|get\_image()|\\
 \verb|ex\_start\_node()|\\
  Stop a node & Used to direct a VM to begin shutdown gracefully &
 \verb|ex\_stop\_node()|\\
- Destroy a node & Used to delete a VM and will return success &
+ Destroy a node & Used to delete a VM and will return success. This method is
+one where human error can lead to significant damages and leveraging REST, the
+solution can confirm deletion with a user or restrict deletion. It also can
+simply ensure virtual machines actually are deleted after a certain threshold as
+it is common for human-generated virtual machines to be left running that leads
+to unwarranted costs. &
 \verb|destroy\_node()|\\
  Get Volume ID & Used to enumerate the unique identifier for cloud storage
 typically used by a VM & \verb|ex\_get\_volume()|\\
@@ -583,7 +599,6 @@ application/json" -H  "Content-Type: application/json" -d "{  \"vmId\": \"NA\",
 \caption{REST API call example}\label{c:REST-example}
 \end{figure}
 
-
 By leveraging an HTTP call allows, we have created an opportunity to extend the
 solution for automation or to provide a browser-based user experience. Both of
 those types of solutions would improve the scalability of what can be done
@@ -591,6 +606,13 @@ compared to cloud provider UI or the provided command-line tools. Both solutions
 are also less prone to error by incorrect data entry or mistakes by overly broad
 permissions. 
 
+The use of Swagger has also helped define the RESTful API into a well-known
+standard. The markup file for the solution contains the documentation for use
+and defines what type of field is expected, from strings to integers. The
+benefit from Swagger is that a very thorough explanation of how to use the API
+is provided and the efforts to generate the documentation is very light.
+Additionally, it is automated and the accuracy is complete compared to a manual
+effort to capture how to use the RESTful API to call libcloud or boto3.
 
 
 \section{Results}
