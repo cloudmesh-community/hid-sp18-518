@@ -262,7 +262,10 @@ use in detail.
 \item{\bf Python.} Python was the underlying language that was used to bridge
 the use of libcloud and boto into the Swagger platform. Multiple scripts were
 written in python that would handle credential handling to the methods that
-would interact with Compute or Storage resources.
+would interact with Compute or Storage resources. Both libcloud and boto3 are
+available as native libraries for Python and it is also salient that Python was
+a language of choice. Other languages do offer cloud SDKs yet they were not
+explored.
 \item{\bf Swagger.} Swagger and Swagger Codegen was used to generate the
 documentation and design to enable a RESTful API implementation of the python
 scripts. Swagger was leveraged to implement the REST interfaces to
@@ -271,11 +274,16 @@ Django that were not assessed.
 \item{\bf Amazon Web Services.} AWS natively supports boto3 which provided
 robust options on what could be delivered via REST. Also, as AWS is the industry
 leader, there is significant open-source development available that provided
-examples of how to use libcloud and boto3.
+examples of how to use libcloud and boto3. AWS also was the most prominent when
+it came to features available and features mapped into libcloud for usage.
 \item{\bf Google Cloud.} GCE has an in-depth integration available with
 libcloud and Apache provides very detailed examples on how to use libcloud.
+Google Cloud is missing some APIs compared to AWS and as such, they are not
+available for portability testing.
 \item{\bf Microsoft Azure.} Azure is not natively supported by libcloud or boto3
 yet libcloud has extensive support for most of the available API calls.
+Microsoft Azure has grown in market share and there is a high likelihood that it
+would be a target for porting to from an AWS developed solution.
 
 \end{description}
 
@@ -326,15 +334,13 @@ data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where we
 will highlight issues for cross-platform support in instances where the target
 provider either does not have API support or libcloud does not support yet.
 
-\section{Benchmarking}
-
 To experiment, we leveraged the following resources.
 
 \begin{itemize}
 
 \item Swagger development to design/build API services for UI
 \item Python development to leverage libcloud
-\item Amazon Web Services, Azure, and Google Cloud
+\item Amazon Web Services, Azure, and Google Cloud documentation
 \item Swagger API documentation
  
 \end{itemize}
@@ -387,7 +393,6 @@ leveraging the functions that enable connectivity, authentication and
 authorization. Once that is complete, you can pull or push information using the
 family of functions that are available in Libcloud for your flavor of cloud
 provider, in this instance which is AWS.
-
 
 
 \begin{figure}[htb]
@@ -578,8 +583,6 @@ that it works as defined, the output is sent to the console.
 
 \section{Use Case: Rest API calls}
 
-\begin{figure}[htb]
-
 The final outcome of the code development was an ability to leverage an HTTP
 call to request usage of cloud services. For example, below is a sample of an
 API call where elements are passed with POST to provide the parameters needed
@@ -589,6 +592,7 @@ and are extensible into other platforms. Some feature enhancements for the REST
 API call would be error handling if libcloud or boto have issues executing the
 call.  
 
+\begin{figure}[htb]
 \begin{verbatim}
 curl -X POST "http://localhost:8080/cloudmesh/compute/aws/ec2" -H  "accept:
 application/json" -H  "Content-Type: application/json" -d "{  \"vmId\": \"NA\", 
@@ -614,6 +618,44 @@ is provided and the efforts to generate the documentation is very light.
 Additionally, it is automated and the accuracy is complete compared to a manual
 effort to capture how to use the RESTful API to call libcloud or boto3.
 
+The API call maps to the following Python script which would build a virtual
+machine.
+
+\begin{figure}[htb]
+\begin{verbatim}
+def
+createAzureVM(vmname,vmsize,image_name,resource_group,storage_account,nw_intf,
+blob_container): 
+
+#print region
+#
+	urn='Canonical:UbuntuServer:16.04-LTS:latest'
+
+	image=driver.get_image(urn, location=None)
+
+	print image
+
+	vmSize =
+NodeSize('Standard_B1s','Standard_B1s',1,127,'None','0.0211',1,'Shared')
+
+	try:
+
+		#driver.create_node(auth='',name=vmname,size=vmSize,image=image,location
+		#=None,ex_resource_group='libcloud',ex_storage_account='libclouddiag209'
+		#,ex_network='libcloud-vnet',ex_blob_container='test123')
+		driver.create_node(auth='',name=vmname,size=vmSize,image=image,location=
+None,ex_resource_group=resource_group,ex_storage_account=storage_account,
+ex_network=nw_intf,ex_blob_container=blob_container)
+	#nic=driver.ex_create_network_interface('libcloudVM-net',
+	#subnet='10.0.0.0',resource_group='libcloud', location=None)
+		print("Virtual Machine created Successfully!")
+		#return "Virtual Machine created Successfully!"
+	except:
+		print("Unexpected error occurred, contact cloud admin", sys.exc_info())
+\end{verbatim}
+
+\caption{Python script example}\label{c:Python-example}
+\end{figure}
 
 \section{Results}
 Review the code developed
