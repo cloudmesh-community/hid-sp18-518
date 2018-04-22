@@ -392,7 +392,7 @@ will measure the lead time metrics on using a RESTful API compared to the
 command line python libraries to determine if removing the expectation for
 portability can improve application development speed.
 
-\subsection{Benchmarking of libcloud library with Python}
+\subsection{Leveraging libcloud library with Python}
 
 To use the libcloud library in your python environment, you install the
 apache-libcloud package using the Python package management system, pip.
@@ -513,7 +513,7 @@ storage space & \verb|destroy\_volume()|\\
  \end{table}
 \end{verbatim}
 
-\subsection{Benchmarking of boto3 library with Python}
+\subsection{Leveraging boto3 library with Python}
 
 In order to leverage boto3 within a python console, you simply can install
 using
@@ -649,6 +649,47 @@ the parameters passed into the method could be leveraged to confirm the correct
 virtual machine was created and also used to enhance the message sent back to
 the user.
 
+\section{Benchmarking}
+
+About option A~\ref{F:vm-start}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/StartVM.pdf}
+  \caption{VM starting benchmark}\label{F:vm-start}
+\end{figure}
+
+About option B~\ref{F:vm-stop}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/StopVM.pdf}
+  \caption{VM stopping benchmark}\label{F:vm-stop}
+\end{figure}
+
+About option C~\ref{F:vm-create}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/CreateVM.pdf}
+  \caption{VM creation benchmark}\label{F:vm-create}
+\end{figure}
+
+About option D~\ref{F:vm-volume}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/Create1GBVol.pdf}
+  \caption{Volume creation benchmark}\label{F:vm-volume}
+\end{figure}
+
+About option E~\ref{F:vm-delete}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/DeleteVM.pdf}
+  \caption{VM deletion benchmark}\label{F:vm-delete}
+\end{figure}
 
 \section{Results}
 We had success leverage libcloud to generate and control the execution of cloud
