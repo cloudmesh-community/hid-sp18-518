@@ -45,7 +45,8 @@ using Swagger and Python to show how libraries like boto and libcloud can be
 used to migrate an application from one cloud provider to another with a
 measurable reduction in human error and with less  time to execute.
 Additionally, we leveraged Swagger to develop RESTful APIs to  further improve
-the gains. We captured the results of the research to share the derived code and
+the gains. We captured the results of the research to share the derived code
+and
 concluded how the research can be applied to existing and new development
 efforts intending to leverage cloud providers. 
 \end{abstract}
@@ -65,7 +66,8 @@ have made progress yet participation by cloud providers is constrained due to
 the competitive nature in the space. Each cloud provider is looking to retain
 their userbase and there is also a desire by each provider to become the de
 facto standard by being the market leader. To fill the gap, solutions like
-Apache libcloud and boto have delivered an abstraction solution to developers to
+Apache libcloud and boto have delivered an abstraction solution to developers
+to
 design applications that are easy to port.
 
 Developers are already confronted with a lack of transparency on which cloud
@@ -73,7 +75,8 @@ provider is optimal for the long-term sustainability of their application.
 Additionally, attempts to abstract away from cloud providers are helpful yet
 their non-standardization still potentially locks you into the solutions
 provided by Apache or communities like boto. We will deliver a continuation of
-that abstraction concept with an accepted standard, REST, to extend libcloud and
+that abstraction concept with an accepted standard, REST, to extend libcloud
+and
 boto. By leveraging REST, we introduced a standardized implementation
 that leverages cloud portability libraries to manage the diversity of cloud
 applications. A high-level abstract of the concept is shown in
@@ -87,8 +90,10 @@ Figure~\ref{F:arch}.
 
 \section{Technology Review}
 
-The National Institute of Standards and Technology defines cloud  portability as
-``data that can be moved from one cloud system to another and that  applications
+The National Institute of Standards and Technology defines cloud  portability
+as
+``data that can be moved from one cloud system to another and that 
+applications
 can be ported and run on different  cloud systems at an  acceptable
 cost.''~\cite{hid-sp18-518-NIST-291} The concept of portability can be extended
 to encompass the full application stack from the web service to the underlying
@@ -96,7 +101,8 @@ hardware itself. Portability can also simply mean the ability to ensure high
 availability where you only are looking to protect against one cloud provider
 being a single point of faiure.
 
-In NIST Special Publication 500-293, the United States governement has defined a
+In NIST Special Publication 500-293, the United States governement has defined
+a
 strategic roadmap that includes ten formal recommendations for all cloud usage.
 Out of the ten requirements, eight of them reference portability and
 interoperability. The Standards Acceleration to Jumpstart the Adoption of Cloud
@@ -126,7 +132,8 @@ attempt to include all providers, the speed of the market makes it challenging
 for portability libraries to include the latest and great cloud provider
 offerings~\cite{hid-sp18-518-LibCloud}. Another dependency is the complexity of
 what needs to be ported. IaaS is the closest cloud offering to bare-metal and
-dependencies for hardware-specific requirements are not a consideration for most
+dependencies for hardware-specific requirements are not a consideration for
+most
 portability offerings. As the adoption of containers and functions increases,
 legacy implementations of cloud solutions that leveraged IaaS will be more
 difficult to port over. 
@@ -136,7 +143,8 @@ comparative of current  open-source  IaaS frameworks'' which is in contrast to
 vendor offerings which tend to lack in
 portability~\cite{hid-sp18-518-Comp-study}. The study was limited to the five
 top open-source providers of IaaS and the derived outcome of the comparison was
-a breakdown over twenty categories that included portability to vendor IaaS. The
+a breakdown over twenty categories that included portability to vendor IaaS.
+The
 summary was that each solution is tailored towards a specific need and while
 portability is possible, there are other challenges that are considered when
 choosing when and which of many cloud providers you will end up using.
@@ -159,7 +167,8 @@ writings, he expresses how air travel is easy for a consumer to determine where
 to fly out of, how to get through security, and to have confidence their bags
 will arrive. The history of aviation is one of consolidation and resistance to
 standards yet the market ultimately did accept some level of
-standardization.~\cite{hid-sp18-518-Wired} Weinman concludes with ``The Internet
+standardization.~\cite{hid-sp18-518-Wired} Weinman concludes with ``The
+Internet
 took decades to go from a vision of packet switching to where it is today. 
 Between the IEEE, industry, and academia, one can hope that the vision of an
 Intercloud is now getting the attention it deserves.''
@@ -191,14 +200,16 @@ usefulness for projects that leverage cloud resources globally.
 Each aspect has a varying degree of functions available that also may not be
 fully available to leverage. For example, the supported methods for Compute are
 fully implemented for EC2 and Azure Virtual Machines yet the deploy node method
-is not yet available for Google Compute Engine. An example that demonstrates the
+is not yet available for Google Compute Engine. An example that demonstrates
+the
 challenge with migrating to a newer service provider is key management. Amazon
 EC2 fully supports all methods for key management yet Azure and Google Cloud
 Engine do not support even one.
 
 Another challenge is that each cloud provider does not offer a testing platform
 for the use of LibCloud. To test the use of the APIs, you will have to leverage
-production services to determine the solution works. We leveraged free trials to
+production services to determine the solution works. We leveraged free trials
+to
 develop the use of libcloud which is suboptimatal for long-term development.
 
 \section{Background on Boto3}
@@ -214,17 +225,21 @@ since.~\cite{hid-sp18-518-AWS-boto3}
 Botocore itself is driven by JSON blobs that define the feature and its use.
 This concept makes it easy to integrate into other coding languages and also
 makes the platform simple to extend. The native instance of boto groups the
-available features into resources, collections, clients, paginators and waiters.
+available features into resources, collections, clients, paginators and
+waiters.
 The features in resources and collections are the core tools that allow you to
-manipulate and enumerate cloud resources. The other three feature groups are for
+manipulate and enumerate cloud resources. The other three feature groups are
+for
 ease of use for aspects like session management and grouping of
 data.~\cite{hid-sp18-518-Boto3}
 
 Boto3 strengths also lead to some of its limitations. The library grants
 in-depth ability to manage AWS resources and is a mature offering that stays
 current with the rapid pace of AWS feature releases. While AWS features are
-provided into boto3 for AWS customers, the extensions into other cloud providers
-is more limited as they are community-driven. This has created a situation where
+provided into boto3 for AWS customers, the extensions into other cloud
+providers
+is more limited as they are community-driven. This has created a situation
+where
 boto3 is more likely to be used solely for AWS.
 
 \section{Architecture}
@@ -234,7 +249,8 @@ leverage multiple methods available in libcloud and boto3. The solution was
 optimized to provide a turnkey implementation to easily manage the deployment
 and interaction with resources in three of the primary cloud providers. The
 summation is a deployable Swagger instance that provides a RESTful API to use
-the underlying python scripts which use libcloud and boto3 to interact, all with
+the underlying python scripts which use libcloud and boto3 to interact, all
+with
 little to no knowledge required by the user.
 
 Since this is a webservice, it provides a capability to access it
@@ -247,7 +263,8 @@ used during creation of a VM and avoid defining configuration for each. It also
 simplifies start, stop and termination of all VMs as a list of VMs can be
 provided for iteration through that list to perform the desired operation. 
 Since it is configuration driven through automation, human error was minimized.
-Our service provided flexibility to work with different clouds (currently 3) and
+Our service provided flexibility to work with different clouds (currently 3)
+and
 scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
@@ -269,10 +286,12 @@ explored.
 \item{\bf Swagger.} Swagger and Swagger Codegen was used to generate the
 documentation and design to enable a RESTful API implementation of the python
 scripts. Swagger was leveraged to implement the REST interfaces to
-align with course content. There are other frameworks available such as Flask or
+align with course content. There are other frameworks available such as Flask
+or
 Django that were not assessed.
 \item{\bf Amazon Web Services.} AWS natively supports boto3 which provided
-robust options on what could be delivered via REST. Also, as AWS is the industry
+robust options on what could be delivered via REST. Also, as AWS is the
+industry
 leader, there is significant open-source development available that provided
 examples of how to use libcloud and boto3. AWS also was the most prominent when
 it came to features available and features mapped into libcloud for usage.
@@ -280,9 +299,11 @@ it came to features available and features mapped into libcloud for usage.
 libcloud and Apache provides very detailed examples on how to use libcloud.
 Google Cloud is missing some APIs compared to AWS and as such, they are not
 available for portability testing.
-\item{\bf Microsoft Azure.} Azure is not natively supported by libcloud or boto3
+\item{\bf Microsoft Azure.} Azure is not natively supported by libcloud or
+boto3
 yet libcloud has extensive support for most of the available API calls.
-Microsoft Azure has grown in market share and there is a high likelihood that it
+Microsoft Azure has grown in market share and there is a high likelihood that
+it
 would be a target for porting to from an AWS developed solution.
 
 \end{description}
@@ -307,13 +328,15 @@ REST will be a combination that will drastically improve portability.
 The Cloud Security Council has broken cloud portability into five measurable
 aspects of instruction, syntactic, metadata, behavior and policy. We will
 leverage the instruction aspect, where the correct application instructions are
-followed when ported, and the syntactic facet where porting between providers is
+followed when ported, and the syntactic facet where porting between providers
+is
 transparent to the end user. This implies our testing is more closely aligned
 with real-world adoption but assumes aspects like policy are left
 unattended.~\cite{hid-sp18-518-Cloud-Council}
 
 The instruction facet looks to assess whether the intended target that is being
-ported to is capable of ``understanding and executing the instructions contained
+ported to is capable of ``understanding and executing the instructions
+contained
 in the executable artifacts of the
 application.''~\cite{hid-sp18-518-Cloud-Council} This is a strong consideration
 if you are running code that depends on an underlying runtime environment,
@@ -330,7 +353,8 @@ in a specific fashion. This is also important at higher abstraction layers such
 as the application data itself, where the ``PaaS service may provide instances
 of databases ready-to-use, in which case the actual databases provided may be
 sensitive to the data syntax of the customer
-data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where we
+data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where
+we
 will highlight issues for cross-platform support in instances where the target
 provider either does not have API support or libcloud does not support yet.
 
@@ -350,7 +374,8 @@ To reflect on the three cloud providers chosen, the results were expected to
 skew towards the strengths and weaknesses of each provider. AWS is considered
 the most mature provider with a very deep API offering where solutions like
 Azure are making progress. Alternatively, Data Motion states ``Google developed
-the Kubernetes standard that AWS and Azure now offer and GCP specializes in high
+the Kubernetes standard that AWS and Azure now offer and GCP specializes in
+high
 compute offerings like Big Data, analytics and machine
 learning.''\cite{hid-sp18-518-DataMotion}
 
@@ -390,7 +415,8 @@ with SSH keys. We used our browser to review EC2 and finalize the setup.
 A Python example for leveraging libcloud to list available containers in an AWS
 S3 instance is shown below. The key steps are importing the libraries and
 leveraging the functions that enable connectivity, authentication and
-authorization. Once that is complete, you can pull or push information using the
+authorization. Once that is complete, you can pull or push information using
+the
 family of functions that are available in Libcloud for your flavor of cloud
 provider, in this instance which is AWS.
 
@@ -468,7 +494,8 @@ for the chosen image & \verb|get\_image()|\\
  Destroy a node & Used to delete a VM and will return success. This method is
 one where human error can lead to significant damages and leveraging REST, the
 solution can confirm deletion with a user or restrict deletion. It also can
-simply ensure virtual machines actually are deleted after a certain threshold as
+simply ensure virtual machines actually are deleted after a certain threshold
+as
 it is common for human-generated virtual machines to be left running that leads
 to unwarranted costs. &
 \verb|destroy\_node()|\\
@@ -488,23 +515,28 @@ storage space & \verb|destroy\_volume()|\\
 
 \subsection{Benchmarking of boto3 library with Python}
 
-In order to leverage boto3 within a python console, you simply can install using
+In order to leverage boto3 within a python console, you simply can install
+using
 pip like we have done with libcloud. Boto3 was developed with Python 3 in mind
 yet backwards compatibility is available to Python 2.7 and 2.6.5. A salient
 point to stress is that boto3 is different than boto, like how Python 2 is
-different than Python 3. The authors of boto stress that boto3 should be used as
+different than Python 3. The authors of boto stress that boto3 should be used
+as
 boto is only supported for older implementations. The features are similar yet
 boto will eventually be deprecated and developers will have to migrate to
 boto3.~\cite{hid-sp18-518-AWS-boto3}
 
 As with all interactions with cloud providers, the aspect of credentials and
-privileges must be addressed before successful use of the libraries. Since boto3
+privileges must be addressed before successful use of the libraries. Since
+boto3
 powers the use of the AWS CLI, we found the use of the AWS CLI to be the most
 effective way to configure credentials. The credential space is shared between
 boto3 and AWS CLI and there is less error when using the user-friendly AWS CLI.
 Credentials can be hardcoded as well and examples are provided by
-Amazon.~\cite{hid-sp18-518-Boto3} The last step that must be taken is define the
-location you wish boto3 to focus on such as AWS regions. Multi-region support is
+Amazon.~\cite{hid-sp18-518-Boto3} The last step that must be taken is define
+the
+location you wish boto3 to focus on such as AWS regions. Multi-region support
+is
 limited and if you do not define an alternate region, it will use us-east-1.
 
 Below is an example of how we leveraged boto3 to start and stop an instance
@@ -523,7 +555,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # 
+# # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -538,7 +570,8 @@ ec2 = boto3.client('ec2')
 
 Once boto3 is imported, the object ec2 is leveraged for ease of use. The client
 method is defined with the intended cloud provider environment, in this case it
-is AWS EC2. The calls in Python using the variable are then vendor agnostic. For
+is AWS EC2. The calls in Python using the variable are then vendor agnostic.
+For
 the methods for starting and stopping instances, boto3 allows the author to
 follow a common syntax structure that will map the parameters into the
 underlying vendor API calls. Last, boto3 will capture the returned output
@@ -558,7 +591,8 @@ API call would be error handling if libcloud or boto have issues executing the
 call.  
 
 Using a utility like curl, you can push a JSON blob using POST. The RESTful API
-is organized into folders, for example, where computer resources are under a URI
+is organized into folders, for example, where computer resources are under a
+URI
 structure prefaced with the intended use, like compute, and then the cloud
 provider you wish to use, like ec2. The JSON blob contains the parameters that
 will be in the body of the POST that will be used by Python and follows normal
@@ -567,8 +601,10 @@ HTTP syntax.
 By leveraging an HTTP call allows, we have created an opportunity to extend the
 solution for automation or to provide a browser-based user experience. Both of
 those types of solutions would improve the scalability of what can be done
-compared to cloud provider UI or the provided command-line tools. Both solutions
-are also less prone to error by incorrect data entry or mistakes by overly broad
+compared to cloud provider UI or the provided command-line tools. Both
+solutions
+are also less prone to error by incorrect data entry or mistakes by overly
+broad
 permissions. 
 
 The use of Swagger has also helped define the RESTful API into a well-known
@@ -604,7 +640,8 @@ blob_container):
 \caption{Python script example}\label{c:Python-example}
 \end{figure}	
 
-The error handling by the script provides the user feedback on what happened and
+The error handling by the script provides the user feedback on what happened
+and
 how to resolve. A future enhancement would be to map the method return back to
 the RESTful API and the error could be presented to the user in the user
 interface they are using to leverage the API. When the method works correctly,
@@ -615,10 +652,12 @@ the user.
 
 \section{Results}
 We had success leverage libcloud to generate and control the execution of cloud
-resources with Amazon Web Services and Microsoft Azure. We were able to abstract
+resources with Amazon Web Services and Microsoft Azure. We were able to
+abstract
 away from native API calls for a cloud provider. Additionally, we were able to
 map the Python scripts leveraging libcloud into RESTful APIs that were
-well-documented leveraging Swagger. The solutions combined to provide a solution
+well-documented leveraging Swagger. The solutions combined to provide a
+solution
 that hides the intricacies of knowing how to use each vendor's API and the
 verbiage they use to explain different types of cloud resources.  
 
