@@ -555,7 +555,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # 
+# # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -650,6 +650,15 @@ virtual machine was created and also used to enhance the message sent back to
 the user.
 
 \section{Benchmarking}
+
+A benchmarking shell script is provided that tests the timing performance
+between the cloud providers when leveraging libcloud. The script would initiate
+the measurement when the API call is made and then consider the request
+complete when libcloud interprets the cloud provider response and returns it.
+The output for the benchmarks were captured for later visualizations to
+interpret how well libcloud works for different types of requests and for
+different providers.
+
 
 About option A~\ref{F:vm-start}.
 
