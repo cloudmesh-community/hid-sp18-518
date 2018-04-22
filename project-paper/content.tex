@@ -423,6 +423,7 @@ directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
  
+\begin{verbatim} 
 \begin{table}[]
 \centering
 \caption{LibCloud features leveraged}\label{t:libcloud-table}
@@ -484,6 +485,7 @@ storage space & \verb|destroy\_volume()|\\
  \end{tabular}%
  }
  \end{table}
+\end{verbatim}
 
 \subsection{Benchmarking of boto3 library with Python}
 
@@ -637,28 +639,11 @@ blob_container):
 	image=driver.get_image(urn, location=None)
 
 	print image
-
-	vmSize =
-NodeSize('Standard_B1s','Standard_B1s',1,127,'None','0.0211',1,'Shared')
-
-	try:
-
-		#driver.create_node(auth='',name=vmname,size=vmSize,image=image,location
-		#=None,ex_resource_group='libcloud',ex_storage_account='libclouddiag209'
-		#,ex_network='libcloud-vnet',ex_blob_container='test123')
-		driver.create_node(auth='',name=vmname,size=vmSize,image=image,location=
-None,ex_resource_group=resource_group,ex_storage_account=storage_account,
-ex_network=nw_intf,ex_blob_container=blob_container)
-	#nic=driver.ex_create_network_interface('libcloudVM-net',
-	#subnet='10.0.0.0',resource_group='libcloud', location=None)
-		print("Virtual Machine created Successfully!")
-		#return "Virtual Machine created Successfully!"
-	except:
-		print("Unexpected error occurred, contact cloud admin", sys.exc_info())
+	
 \end{verbatim}
 
 \caption{Python script example}\label{c:Python-example}
-\end{figure}
+\end{figure}	
 
 The error handling by the script provides the user feedback on what happened and
 how to resolve. A future enhancement would be to map the method return back to
@@ -667,6 +652,20 @@ interface they are using to leverage the API. When the method works correctly,
 the parameters passed into the method could be leveraged to confirm the correct
 virtual machine was created and also used to enhance the message sent back to
 the user.
+		
+\begin{figure}[htb]
+\begin{verbatim}
+	
+		print("Virtual Machine created Successfully!")
+		#return "Virtual Machine created Successfully!"
+	except:
+		print("Unexpected error occurred, contact cloud admin", sys.exc_info())
+\end{verbatim}
+
+\caption{Python error handling}\label{c:Python-error}
+\end{figure}
+
+
 
 \section{Results}
 We had success leverage libcloud to generate and control the execution of cloud
