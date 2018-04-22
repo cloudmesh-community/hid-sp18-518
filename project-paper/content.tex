@@ -394,7 +394,6 @@ authorization. Once that is complete, you can pull or push information using the
 family of functions that are available in Libcloud for your flavor of cloud
 provider, in this instance which is AWS.
 
-
 \begin{figure}[htb]
 
 \begin{verbatim}
@@ -422,7 +421,7 @@ Libcloud during our development. The list is tailored towards only what we used
 directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
- 
+
 \begin{verbatim} 
 \begin{table}[]
 \centering
@@ -514,7 +513,6 @@ the instance ID you wish to change. The parameters are ultimately passed to
 boto3 to connect to your EC2 instances and perform the action.
 
 \begin{figure}[htb]
-
 \begin{verbatim}
 
 # To start the instance
@@ -525,47 +523,12 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# Code developed in support from the online documentation
-# http://boto3.readthedocs.io/en/latest/guide/ec2-example-managing-instances.
-# html
-# 
-import sys
+# # 
 import boto3
-from botocore.exceptions import ClientError
 
-instance_id = sys.argv[2]
 action = sys.argv[1].upper()
 
 ec2 = boto3.client('ec2')
-
-if action == 'ON':
-    # Do a dryrun first to verify permissions
-    try:
-        ec2.start_instances(InstanceIds=[instance_id], DryRun=True)
-    except ClientError as e:
-        if 'DryRunOperation' not in str(e):
-            raise
-
-    # Dry run succeeded, run start_instances without dryrun
-    try:
-        response = ec2.start_instances(InstanceIds=[instance_id], DryRun=False)
-        print(response)
-    except ClientError as e:
-        print(e)
-else:
-    # Do a dryrun first to verify permissions
-    try:
-        ec2.stop_instances(InstanceIds=[instance_id], DryRun=True)
-    except ClientError as e:
-        if 'DryRunOperation' not in str(e):
-            raise
-
-    # Dry run succeeded, call stop_instances without dryrun
-    try:
-        response = ec2.stop_instances(InstanceIds=[instance_id], DryRun=False)
-        print(response)
-    except ClientError as e:
-        print(e)
 
 \end{verbatim}
 
@@ -594,16 +557,12 @@ and are extensible into other platforms. Some feature enhancements for the REST
 API call would be error handling if libcloud or boto have issues executing the
 call.  
 
-\begin{figure}[htb]
-\begin{verbatim}
-curl -X POST "http://localhost:8080/cloudmesh/compute/aws/ec2" -H  "accept:
-application/json" -H  "Content-Type: application/json" -d "{  \"vmId\": \"NA\", 
-\"name\": \"myVM\",  \"image\": \"ami-25615740\",  \"region\": \"us-east-2\", 
-\"size\": \"t2.micro\",  \"status\": \"NA\"}"
-\end{verbatim}
-
-\caption{REST API call example}\label{c:REST-example}
-\end{figure}
+Using a utility like curl, you can push a JSON blob using POST. The RESTful API
+is organized into folders, for example, where computer resources are under a URI
+structure prefaced with the intended use, like compute, and then the cloud
+provider you wish to use, like ec2. The JSON blob contains the parameters that
+will be in the body of the POST that will be used by Python and follows normal
+HTTP syntax.
 
 By leveraging an HTTP call allows, we have created an opportunity to extend the
 solution for automation or to provide a browser-based user experience. Both of
@@ -652,19 +611,6 @@ interface they are using to leverage the API. When the method works correctly,
 the parameters passed into the method could be leveraged to confirm the correct
 virtual machine was created and also used to enhance the message sent back to
 the user.
-		
-\begin{figure}[htb]
-\begin{verbatim}
-	
-		print("Virtual Machine created Successfully!")
-		#return "Virtual Machine created Successfully!"
-	except:
-		print("Unexpected error occurred, contact cloud admin", sys.exc_info())
-\end{verbatim}
-
-\caption{Python error handling}\label{c:Python-error}
-\end{figure}
-
 
 
 \section{Results}
