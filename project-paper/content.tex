@@ -770,7 +770,7 @@ providers.
 
 \subsection{Virtual Machine - Start}~\ref{F:vm-start}.
 
-It was also observed that all three providers were able to execute quickly
+It was also observed that all three providers were able to execute successfully
 across all 10 tests. AWS was benchmarked as the leader of the three with an
 average execution time of 16.4 seconds. AWS was surprisingly able to still be
 the leader on average with a significant outlier in the dataset where one test
@@ -809,7 +809,6 @@ machines and containers. Google was found to be able to generate a new virtual
 machine in 12.4s, which is half the time it takes compared to 27.5s from Azure.
 AWS trailed both with an average creation time of 37.6 seconds.
 
-
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\columnwidth]{images/CreateVM.png}
@@ -818,10 +817,7 @@ AWS trailed both with an average creation time of 37.6 seconds.
 
 \subsection{Storage - Create}~\ref{F:vm-volume}.
 
-Average duration Create volume for 
-AWS is  1.8 seconds
-Azure is 15.4
-Google is 126.7
+For the creation of storage, AWS was significantly faster than the other two providers. AWS was able to create a 1 GB volume and return success within 1.8s. Azure was slower at 15.4s yet Google was markedly much slower with an average speed of 126.7. Where Google was the fastest solution to create a new virtual machine, the ability to rapidly deploy additional storage was found to be a weakness of the Google cloud provider. We do not perceive it to be an issue with how Libcloud requests storage from Google and it is attributed to Google directly.
 
 \begin{figure}[!ht]
   \centering
@@ -831,10 +827,7 @@ Google is 126.7
 
 \subsection{Virtual Machine - Delete}~\ref{F:vm-delete}.
 
-Average duration Delete VM for 
-AWS is  3.2 seconds
-Azure is 199.3
-Google is 87
+For the rapid decommissioning or clean up of virtual machines, AWS was also found to be remarkably fast. Libcloud had success with all three vendors with AWS on average reporting a virtual machine had been deleted in 3.2s. Google came in next with an average of 87s and Azure was the slowest at 199.3s.
 
 \begin{figure}[!ht]
   \centering
@@ -858,6 +851,8 @@ resources yet at boto3 is the underlying technology for AWS utilities, the
 value-add was limited to converting boto3 calls for AWS into a RESTful API.
 
 \section{Conclusion}
+
+\section{Work Contributions}
 
 \section{Artifacts}
 
