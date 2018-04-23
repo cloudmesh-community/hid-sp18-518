@@ -570,7 +570,9 @@ customized use.
 \begin{tabular} {p{2.5cm}|p{5cm}}
 Command & Description\\
 \toprule
-\verb|get_driver()| & How to choose the primary cloud provider that will be used by following functions. We leveraged Amazon Web Services, Microsoft Azure and Google Cloud as targets for this method.\\
+\verb|get_driver()| & How to choose the primary cloud provider that will be
+used by following functions. We leveraged Amazon Web Services, Microsoft Azure
+and Google Cloud as targets for this method.\\
 \verb|dns()| & Used to configure DNS for compute resources. This is an example
 of a
 late-stage call to further define how a virtual machine should be configured.\\
@@ -673,7 +675,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -889,30 +891,50 @@ value-add was limited to converting boto3 calls for AWS into a RESTful API.
 \section{Conclusion}
 
 \section{Work Contributions}
-AWS Compute and Storage coding \- Sushant Athaley
-Azure Compute and Storage Coding \- Harshad Pitkar
-Google libcloud research \- Michael Robinson
-Google Compute coding \- Harshad Pitkar
-Google Storage Coding \- Sushant Athaley
-Dockerfile \- Sushant Athaley
-Makefile \- Sushant Athaley
-Architecture explanation \- Michael Robinson
-Architecture diagrams \- Sushant Athaley
-Benchmarking script \- Harshad Pitkar
-Bencmarking plots \- Harshad Pitkar
-Benchmarking explanation \- Michael Robinson
-Code packaging and management \- Sushant Athaley
-Code explanation \- Michael Robinson
-Swagger Spec \- Sushant Athaley and Harshad Pitkar
-Service Testing \- Sushant Athaley and Harshad Pitkar
-Code Merging \- Sushant Athaley and Harshad Pitkar
-Project Paper \- Michael Robinson and Sushant Athaley and Harshad Pitkar
+\begin{itemize}
+\item
+AWS Compute and Storage coding by Sushant Athaley
+\item
+Azure Compute and Storage Coding by Harshad Pitkar
+\item
+Google libcloud research by Michael Robinson
+\item
+Google Compute coding by Harshad Pitkar
+\item
+Google Storage Coding by Sushant Athaley
+\item
+Dockerfile by Sushant Athaley
+\item
+Makefile by Sushant Athaley
+\item
+Architecture explanation by Michael Robinson
+\item
+Architecture diagrams by Sushant Athaley
+\item
+Benchmarking script by Harshad Pitkar
+\item
+Bencmarking plots by Harshad Pitkar
+\item
+Benchmarking explanation by Michael Robinson
+\item
+Code packaging and management by Sushant Athaley
+\item
+Code explanation by Michael Robinson
+\item
+Swagger Spec by Sushant Athaley and Harshad Pitkar
+\item
+Service Testing by Sushant Athaley and Harshad Pitkar
+\item
+Code Merging by Sushant Athaley and Harshad Pitkar
+\item
+Project Paper by Michael Robinson and Sushant Athaley and Harshad Pitkar
+\end{itemize}
 
 \section{Artifacts}
 
 Code is checked-in in Github at location
-https://github.com/cloudmesh-community/hid-sp18-518/tree/master/project-
-code
+\emph{https://github.com/cloudmesh-community/hid-sp18-518/tree/master/project-
+code}
 
 \begin{acks}
 
