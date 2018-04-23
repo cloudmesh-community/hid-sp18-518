@@ -855,7 +855,15 @@ abstract away from native API calls for a cloud provider. Additionally, we were
 able to map the Python scripts leveraging libcloud into RESTful APIs that were
 well-documented leveraging Swagger. The solutions combined to provide a
 solution that hides the intricacies of knowing how to use each vendor's API and
-the verbiage they use to explain different types of cloud resources.  
+the verbiage they use to explain different types of cloud resources. While
+libcloud works well with all the three vendors Amazon, Microsoft and Google,
+there are certain functions that are available only for AWS such as uploading
+a file or downloading a file. Libcloud integration with Google is straightforward
+and the API functions operate over string parameters whereas for Azure a Node
+object has to be passed and returned in most cases. Implementation with Azure
+especially required the use of a hidden or internal function usage in one of the
+cases. Due to this time to integrate Azure was significantly higher as compared
+to AWS or Azure.
 
 The use of boto3 became challenging in relation to Google Cloud. In concurrency
 with what the technology review stressed, the use of proprietary utilities like
