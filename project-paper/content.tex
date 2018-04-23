@@ -261,26 +261,8 @@ and
 scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
-A high-level depiction of the architecture along with requisite functions are
-shown in
-Figure~\ref{F:arch}.
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\columnwidth]{images/proj-arch.png}
-  \caption{Project Architecture}\label{F:arch}
-\end{figure}
 
-A layered approach was used so that a new implementation could be easily
-integrated into
-the solution. Figure~\ref{F:layerd-arch} depicts the layered approach for this
-service.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\columnwidth]{images/layred-arch.PNG}
-  \caption{Layred Architecture}\label{F:layerd-arch}
-\end{figure}
 
 \section{Other technologies used}
 The other technologies leveraged for implementation are listed below. The
@@ -405,7 +387,6 @@ command line python libraries to determine if removing the expectation for
 portability can improve application development speed.
 
 \subsection{Code Organization}
-
 
 The code related to the project is organized as described in
 Figure~\ref{c:code-structure}
@@ -576,67 +557,61 @@ print d;
 
 \end{figure}
 
-The following table is a breakdown of other functions that were leveraged in
+The following table\ref{t:libcloudtable} is a breakdown of other functions
+that were leveraged in
 Libcloud during our development. The list is tailored towards only what we used
 directly. If a feature is specific towards a certain cloud provider, as in it
 was not completely abstracted by Libcloud, the description will point out the
 customized use.
 
-\begin{verbatim} 
-
 \begin{table}[htb]
 \centering
-\caption{LibCloud features leveraged}
-\label{t:libcloud-table}
-\begin{tabular} {p{5cm}|p{3.5cm}}
-Command & Description \\
-\hline
-\verb|libcloud.get\_driver()| & How to choose the primary cloud provider that
-will be used by
-following functions. We leveraged Amazon Web Services, Microsoft Azure and
-Google Cloud as targets for this method.\\
-
+\caption{LibCloud features leveraged}\label{t:libcloudtable}
+\begin{tabular} {p{2.5cm}|p{5cm}}
+Command & Description\\
+\toprule
+\verb|get_driver()| & How to choose the primary cloud provider that will be used by following functions. We leveraged Amazon Web Services, Microsoft Azure and Google Cloud as targets for this method.\\
 \verb|dns()| & Used to configure DNS for compute resources. This is an example
 of a
 late-stage call to further define how a virtual machine should be configured.\\
 
-\verb|get\_driver\_lb()| & Used to configure load balancing for compute
+\verb|get_driver_lb()| & Used to configure load balancing for compute
 resources. This
 field is a great example of the power of cloud computing and RESTful API as
 redundant, highly available virtual machines can be built quickly and if you
 choose, by default.\\
 
-\verb|list\_nodes()| & Used to enumerate the nodes already created within the
+\verb|list_nodes()| & Used to enumerate the nodes already created within the
 cloud
 provider. This call can be automated to routinely audit usage of virtual
 machines to identify trends for usage.\\
 
-\verb|list\_sizes()| & Used to enumerate the size of the VM and supporting
+\verb|list_sizes()| & Used to enumerate the size of the VM and supporting
 components.
 This method is commonly used to reduce costs and identify VMs that may have
 grown beyond a comfortable level.\\
 
-\verb|list\_images()| & Used to enumerate the avaiable, deployable images the
+\verb|list_images()| & Used to enumerate the avaiable, deployable images the
 cloud
 provider makes available. This parameter is typically used before a call to
 generate a virtual machine to ensure the image is still provided by the cloud
 provider.\\
 
-\verb|get\_image()| & Used to pull the unique identifier for the human-readable
+\verb|get_image()| & Used to pull the unique identifier for the human-readable
 name
 for the chosen image\\
 
-\verb|ex\_get\_node()| & Used to pull the unique identifier for one or many
+\verb|ex_get_node()| & Used to pull the unique identifier for one or many
 VMs.\\
 
-\verb|create\_node()| & Used in conjuection with image listing to deploy a new
+\verb|create_node()| & Used in conjuection with image listing to deploy a new
 VM.\\
 
-\verb|ex\_start\_node()| & Used to tell a previously built VM to boot.\\
+\verb|ex_start_node()| & Used to tell a previously built VM to boot.\\
 
-\verb|ex\_stop\_node()| & Used to direct a VM to begin shutdown gracefully.\\
+\verb|ex_stop_node()| & Used to direct a VM to begin shutdown gracefully.\\
 
-\verb|destroy\_node()| & Used to delete a VM and will return success. This
+\verb|destroy_node()| & Used to delete a VM and will return success. This
 method is
 one where human error can lead to significant damages and leveraging REST, the
 solution can confirm deletion with a user or restrict deletion. It also can
@@ -645,22 +620,16 @@ as
 it is common for human-generated virtual machines to be left running that leads
 to unwarranted costs.\\
 
-\verb|ex\_get\_volume()| & Used to enumerate the unique identifier for cloud
+\verb|ex_get_volume()| & Used to enumerate the unique identifier for cloud
 storage
 typically used by a VM.\\
 
-\verb|create\_volume()| & Used to add addtional storage to a VM.\\
+\verb|create_volume()| & Used to add addtional storage to a VM.\\
 
-\verb|create\_volume\_snapshot()| & Used to take a recovery image of a VM for
-restoration
-purposes.\\
-
-\verb|destroy\_volume()| & Used to delete storage or snapshot to recover
+\verb|destroy_volume()| & Used to delete storage or snapshot to recover
 storage space.\\
-
- \end{tabular}
- \end{table}
-\end{verbatim}
+\end{tabular}
+\end{table}
 
 \subsection{Leveraging boto3 library with Python}
 
@@ -704,7 +673,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -911,7 +880,7 @@ as compared
 to AWS or Azure.
 
 The use of boto3 became challenging in relation to Google Cloud. In concurrency
-with what the technology review stressed~\cite{hid-sp18-518-DataMotion}, the
+with what the technology review stressed, the
 use of proprietary utilities like
 gsutil limited what we can develop. Boto3 development was successful with AWS
 resources yet at boto3 is the underlying technology for AWS utilities, the
@@ -920,33 +889,31 @@ value-add was limited to converting boto3 calls for AWS into a RESTful API.
 \section{Conclusion}
 
 \section{Work Contributions}
-AWS compute coding - Sushant Athaley
-AWS Storage coding - Sushant Athaley
-Azure Compute Coding - Harshad Pitkar
-Azure Storage Coding - Harshad Pitkar
-Google libcloud research - Michael Robinson
-Google Compute coding - Harshad Pitkar
-Google Storage Coding - Sushant Athaley
-Dockerfile - Sushant Athaley
-Makefile - Sushant Athaley
-Architecture explanation - Michael Robinson
-Architecture diagrams - Sushant Athaley
-Benchmarking script - Harshad Pitkar
-Bencmarking plots - Harshad Pitkar
-Benchmarking explanation - Michael Robinson
-Code packaging and management - Sushant Athaley
-Code explanation - Michael Robinson
-Swagger Spec - Sushant Athaley and Harshad Pitkar
-Service Testing - Harshad Pitkar & Sushant Athaley
-Code Merging - Sushant Athaley & Harshad Pitkar
-Project Paper - Michael Robinson & Harshad Pitkar & Sushant Athaley
+AWS Compute and Storage coding \- Sushant Athaley
+Azure Compute and Storage Coding \- Harshad Pitkar
+Google libcloud research \- Michael Robinson
+Google Compute coding \- Harshad Pitkar
+Google Storage Coding \- Sushant Athaley
+Dockerfile \- Sushant Athaley
+Makefile \- Sushant Athaley
+Architecture explanation \- Michael Robinson
+Architecture diagrams \- Sushant Athaley
+Benchmarking script \- Harshad Pitkar
+Bencmarking plots \- Harshad Pitkar
+Benchmarking explanation \- Michael Robinson
+Code packaging and management \- Sushant Athaley
+Code explanation \- Michael Robinson
+Swagger Spec \- Sushant Athaley and Harshad Pitkar
+Service Testing \- Sushant Athaley and Harshad Pitkar
+Code Merging \- Sushant Athaley and Harshad Pitkar
+Project Paper \- Michael Robinson and Sushant Athaley and Harshad Pitkar
 
 \section{Artifacts}
 
-Code is checked-in in Github at location \\
-https://github.com/cloudmesh-community/hid-sp18-518/tree/master\\
-/project-code \\
-/
+Code is checked-in in Github at location
+https://github.com/cloudmesh-community/hid-sp18-518/tree/master/project-
+code
+
 \begin{acks}
 
   The authors would like to thank Dr.~Gregor~von~Laszewski for his
