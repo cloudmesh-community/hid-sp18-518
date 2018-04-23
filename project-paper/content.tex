@@ -391,6 +391,116 @@ will measure the lead time metrics on using a RESTful API compared to the
 command line python libraries to determine if removing the expectation for
 portability can improve application development speed.
 
+\subsection{Code Organization}
+
+Code is checked-in in Github at loaction \\
+https://github.com/cloudmesh-community/hid-sp18-518/tree/master\\
+/project-code \\
+Code is organized as described in Figure \ref{c:code-structure}
+\begin{figure}[htb]
+\begin{verbatim}
+code
+    - Makefile
+    - Dockerfile
+    - compute-storage.yml
+    - benchmarking.sh
+    - etc
+        - credentials.yml
+        - google key file
+    - aws
+        - python scripts
+   -  azure
+        - python scripts
+    - google
+        - python scripts
+\end{verbatim}
+\caption{Code Structure}\label{c:code-structure}
+\end{figure}
+
+Code details
+\begin{itemize}
+\item \emph{Makefile} - Makefile script contains commands to
+generate Swagger REST service code, import required packages,
+copy files on the desired location, start swagger service, test
+swagger service, build docker container, start and stop docker
+container.
+\item \emph{Dockerfile} - builds docker container
+\item \emph{compute-storage.yml} - contains Swagger REST service
+specification
+\item \emph{etc} - this directory contains all configuration related files. \emph{credentials.yml} file contains
+authentication information required by AWS, AZURE, and Google
+cloud. This directory also contains key file required by Google cloud for the connection.
+\item \emph{aws} - this directory contains swagger controllers 
+and python scripts for various operations on Amazon AWS cloud services
+\item \emph{azure} - this directory contains swagger controllers
+and python scripts for various operations on Azure cloud services
+\item \emph{google} - this directory contains swagger controllers
+and python scripts for various operations on Google cloud services
+\item \emph{benchmarking.sh} - this script contains commands to generate data for benchmark
+\end{itemize}
+
+\subsection{Deployment}
+
+This swagger service can be deployed as docker container or
+standalone service on any server. Makefile contains commands to 
+build and run the docker container. Make file also contains commands to build swagger service and start swagger service as a standalone application. Once service is deployed, it can be accessed through any browser or curl calls.
+
+
+\subsection{Usage}
+
+There are certain pre-requisites for each cloud to use
+this REST service.
+\begin{itemize}
+\item \emph{AWS} - AWS account along with access key and a secret key is required to connect AWS cloud.
+\item \emph{Azure}
+Azure tenant ID, subscription ID, application id and password is required to connect Azure cloud.
+\item \emph{Google}
+Google service account ID, project ID along with key file is required to connect Google cloud.
+\end{itemize}
+This information should be kept confidential and need to be configured in the yml file under the etc directory. Key file generated for Google cloud also need to be kept in this directory. Default VM parameters like image, size, and region can be specified in configuration and Swagger specification file.
+
+Table\ref{t:serviceFunctions} describes functions provided by the swagger service.
+\begin{table}[htb]
+\centering
+\caption{Service Calls}
+\label{t:serviceFunctions}
+\begin{tabular} {p{5cm}|p{3.5cm}}
+Path & Description \\
+\hline
+/compute/aws/ec2    & Creates AWS VM \\
+/compute/aws/ec2/findByRegion & List AWS VMs based on region \\
+/compute/aws/ec2/\{vmname\} & Get AWS VM details by VM Name \\
+/compute/aws/ec2/\{vmname\}/start & Start AWS VM \\
+/compute/aws/ec2/\{vmname\}/stop & Stop AWS VM \\
+/compute/aws/ec2/\{vmname\}/terminate & Terminate AWS VM \\
+/storage/aws/s3/bucket & List all AWS S3 buckets \\
+/storage/aws/s3/bucket & Post method to create S3 bucket \\
+/storage/aws/s3/bucket & Delete method to delete S3 bucket \\
+/storage/aws/s3/\{bucketName\} & List all files inside the bucket \\
+/storage/aws/s3/\{bucketName\}/ deleteFile & Delete file from bucket \\
+/storage/aws/s3/\{bucketName\}/ uploadFile & Upload file to AWS S3 bucket \\
+/storage/aws/s3/\{bucketName\}/ downloadFile & Download file from S3 to the download directory \\
+/compute/azure/createvm & Create VM on Azure cloud \\
+/compute/azure/deletevm & Delete or teminate Azure VM \\
+/compute/azure/startvm & Start Azure VM \\
+/compute/azure/stopvm & Stop Azure VM \\
+/compute/azure/listvm & List Azure VMs \\
+/storage/azure/createVol & Create Azure volume \\
+/storage/azure/createVolSnap & Create Azure volume snapshot \\
+/storage/azure/deleteVol & Delete Azure volume \\
+/storage/azure/deleteVolSnap & Delete Azure volume snapshot \\
+/compute/google/createvm & Create VM on Google cloud \\
+/compute/google/deletevm & Delete or teminate Google VM \\
+/compute/google/startvm & Start Google VM \\
+/compute/google/stopvm & Stop Google VM \\
+/compute/google/listvm & List Google VMs \\
+/storage/google/createVol & Create Google volume \\
+/storage/google/createVolSnap & Create Google volume snapshot \\
+/storage/google/deleteVol & Delete Google volume \\
+/storage/google/deleteVolSnap & Delete Google volume snapshot \\
+\end{tabular}
+\end{table}
+
 \subsection{Leveraging libcloud library with Python}
 
 To use the libcloud library in your python environment, you install the
