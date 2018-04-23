@@ -101,7 +101,7 @@ Out of the ten requirements, eight of them reference portability and
 interoperability. The Standards Acceleration to Jumpstart the Adoption of Cloud
 Computing (SAJACC) is an initiative under the guidance of NIST 500-293 that is
 to define ``qualitative testing of specifications against interoperability,
-security, and portability requirements.''~\cite{hid-sp18-518-NIST-293}
+security, and portability requirements~\cite{hid-sp18-518-NIST-293}.''
 
 To define portability further, we have to differentiate the tiers of cloud
 service and where portability may be needed. Cloud providers have generally
@@ -262,7 +262,24 @@ scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
 
+A high-level depiction of the architecture along with requisite functions are
+shown in Figure~\ref{F:arch}.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/proj-arch.png}
+  \caption{Project Architecture}\label{F:arch}
+\end{figure}
+
+A layered approach was used so that a new implementation could be easily
+integrated into the solution. Figure~\ref{f:layerd-arch} depicts the layered
+approach for this service.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/layred-arch.PNG}
+  \caption{Layered Architecture}\label{f:layerd-arch}
+\end{figure}
 
 \section{Other technologies used}
 The other technologies leveraged for implementation are listed below. The
@@ -302,7 +319,7 @@ it
 would be a target for porting to from an AWS developed solution.
 
 \item{\bf R.} R was utilized to generate the box plot visualizations and
-the summary statistics from bench marking data.
+the summary statistics from benchmarking data.
 
 
 \end{description}
@@ -679,7 +696,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -899,6 +916,24 @@ resources yet at boto3 is the underlying technology for AWS utilities, the
 value-add was limited to converting boto3 calls for AWS into a RESTful API.
 
 \section{Conclusion}
+
+Libraries available for abstracting the cloud provider from your code
+development were found to be effective. The solutions are syntactically and
+instructionally accurate. The solutions also had negligible impact on
+performance and were easy to extend for custom usage, such as benchmarking.
+The cloud providers were found to be distinct, even with an abstraction layer
+such as libcloud and boto3. There were challenges with authorization and object
+handling between providers that had to be handled independently. 
+
+The project exhibited that it is possible to ensure your application could be
+ported yet with significant work. Further research would be necessary to see if
+a manual port of native use of cloud provider APIs is more intensive than
+leveraging something like libcloud. Our perception is that efforts to ensure
+portability are incomplete and if the three primary providers could incur cost
+beyond API calls, there is still significant work to be done to align with the
+NIST guidance of ensuring portability to get beyond where ``consumers must seek
+to understand cloud services through a customized and product specific view
+presented by each service provider~\cite{hid-sp18-518-NIST-293}.''
 
 \section{Work Contributions}
 \begin{itemize}
