@@ -1,4 +1,4 @@
-% status: 40
+% status: 80
 % chapter: Virtual Machines
 % 
 \title{Leveraging REST for cloud portability}
@@ -393,10 +393,8 @@ portability can improve application development speed.
 
 \subsection{Code Organization}
 
-Code is checked-in in Github at loaction \\
-https://github.com/cloudmesh-community/hid-sp18-518/tree/master\\
-/project-code \\
-Code is organized as described in Figure \ref{c:code-structure}
+
+The code related to the project is organized as described in Figure \ref{c:code-structure}
 \begin{figure}[htb]
 \begin{verbatim}
 code
@@ -421,8 +419,8 @@ Code details
 \begin{itemize}
 \item \emph{Makefile} - Makefile script contains commands to
 generate Swagger REST service code, import required packages,
-copy files on the desired location, start swagger service, test
-swagger service, build docker container, start and stop docker
+copy files on the desired location, start Swagger service, test
+Swagger service, build docker container, start and stop docker
 container.
 \item \emph{Dockerfile} - builds docker container
 \item \emph{compute-storage.yml} - contains Swagger REST service
@@ -430,20 +428,20 @@ specification
 \item \emph{etc} - this directory contains all configuration related files. \emph{credentials.yml} file contains
 authentication information required by AWS, AZURE, and Google
 cloud. This directory also contains key file required by Google cloud for the connection.
-\item \emph{aws} - this directory contains swagger controllers 
+\item \emph{aws} - this directory contains Swagger controllers 
 and python scripts for various operations on Amazon AWS cloud services
-\item \emph{azure} - this directory contains swagger controllers
+\item \emph{azure} - this directory contains Swagger controllers
 and python scripts for various operations on Azure cloud services
-\item \emph{google} - this directory contains swagger controllers
+\item \emph{google} - this directory contains Swagger controllers
 and python scripts for various operations on Google cloud services
-\item \emph{benchmarking.sh} - this script contains commands to generate data for benchmark
+\item \emph{benchmarking.sh} - this script contains commands to generate data for benchmarking
 \end{itemize}
 
 \subsection{Deployment}
 
-This swagger service can be deployed as docker container or
-standalone service on any server. Makefile contains commands to 
-build and run the docker container. Make file also contains commands to build swagger service and start swagger service as a standalone application. Once service is deployed, it can be accessed through any browser or curl calls.
+The Swagger service can be deployed as docker container or
+standalone service on any server type. The Makefile contains commands to 
+build and run the docker container. Makefile also contains commands to build the Swagger service and start Swagger service as a standalone application. Once the service is deployed, it can be accessed through any browser or curl-like utility.
 
 
 \subsection{Usage}
@@ -457,9 +455,9 @@ Azure tenant ID, subscription ID, application id and password is required to con
 \item \emph{Google}
 Google service account ID, project ID along with key file is required to connect Google cloud.
 \end{itemize}
-This information should be kept confidential and need to be configured in the yml file under the etc directory. Key file generated for Google cloud also need to be kept in this directory. Default VM parameters like image, size, and region can be specified in configuration and Swagger specification file.
+This information should be kept confidential and need to be configured in the yml file under the etc directory. The key file generated for Google cloud will also need to be kept in this directory. Default VM parameters like image, size, and region can be specified in the configuration and Swagger specification file.
 
-Table\ref{t:serviceFunctions} describes functions provided by the swagger service.
+Table\ref{t:serviceFunctions} describes functions provided by the Swagger service.
 \begin{table}[htb]
 \centering
 \caption{Service Calls}
@@ -862,6 +860,10 @@ value-add was limited to converting boto3 calls for AWS into a RESTful API.
 \section{Conclusion}
 
 \section{Artifacts}
+
+Code is checked-in in Github at location \\
+https://github.com/cloudmesh-community/hid-sp18-518/tree/master\\
+/project-code \\
 
 \begin{acks}
 
