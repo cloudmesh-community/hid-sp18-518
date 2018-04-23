@@ -555,67 +555,70 @@ was not completely abstracted by Libcloud, the description will point out the
 customized use.
 
 \begin{verbatim} 
-\begin{table}[]
+
+\begin{table}[htb]
 \centering
-\caption{LibCloud features leveraged}\label{t:libcloud-table}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lll}
- \toprule
- \multicolumn{3}{|c|}{Features} \\
- \midrule
-Function & Description & Command\\
- \midrule
- Driver	& How to choose the primary cloud provider that will be used by
+\caption{LibCloud features leveraged}
+\label{t:libcloud-table}
+\begin{tabular} {p{5cm}|p{3.5cm}}
+Command & Description \\
+\hline
+\verb|libcloud.get\_driver()| & How to choose the primary cloud provider that will be used by
 following functions. We leveraged Amazon Web Services, Microsoft Azure and
-Google Cloud as targets for this method. & \verb|libcloud.get\_driver()|\\
- DNS & Used to configure DNS for compute resources. This is an example of a
-late-stage call to further define how a virtual machine should be configured. &
-\verb|dns()|\\
- Load Balancing & Used to configure load balancing for compute resources. This
+Google Cloud as targets for this method.\\
+
+\verb|dns()| & Used to configure DNS for compute resources. This is an example of a
+late-stage call to further define how a virtual machine should be configured.\\
+
+\verb|get\_driver\_lb()| & Used to configure load balancing for compute resources. This
 field is a great example of the power of cloud computing and RESTful API as
 redundant, highly available virtual machines can be built quickly and if you
-choose, by default. &
-\verb|get\_driver\_lb()|\\
- Node listing & Used to enumerate the nodes already created within the cloud
+choose, by default.\\
+
+\verb|list\_nodes()| & Used to enumerate the nodes already created within the cloud
 provider. This call can be automated to routinely audit usage of virtual
-machines to identify trends for usage. & \verb|list\_nodes()|\\
- Size listing & Used to enumerate the size of the VM and supporting components.
+machines to identify trends for usage.\\
+
+\verb|list\_sizes()| & Used to enumerate the size of the VM and supporting components.
 This method is commonly used to reduce costs and identify VMs that may have
-grown beyond a comfortable level. &
-\verb|list\_sizes()|\\
- Image listing & Used to enumerate the avaiable, deployable images the cloud
+grown beyond a comfortable level.\\
+
+\verb|list\_images()| & Used to enumerate the avaiable, deployable images the cloud
 provider makes available. This parameter is typically used before a call to
 generate a virtual machine to ensure the image is still provided by the cloud
-provider. & \verb|list\_images()|\\
- Get Image ID & Used to pull the unique identifier for the human-readable name
-for the chosen image & \verb|get\_image()|\\
- Get Node ID & Used to pull the unique identifier for one or many VMs &
-\verb|ex\_get\_node()|\\
- Create new node & Used in conjuection with image listing to deploy a new VM &
-\verb|create\_node()|\\
- Start a node & Used to tell a previously built VM to boot &
-\verb|ex\_start\_node()|\\
- Stop a node & Used to direct a VM to begin shutdown gracefully &
-\verb|ex\_stop\_node()|\\
- Destroy a node & Used to delete a VM and will return success. This method is
+provider.\\
+
+\verb|get\_image()| & Used to pull the unique identifier for the human-readable name
+for the chosen image\\
+
+\verb|ex\_get\_node()| & Used to pull the unique identifier for one or many VMs.\\
+
+\verb|create\_node()| & Used in conjuection with image listing to deploy a new VM.\\
+
+\verb|ex\_start\_node()| & Used to tell a previously built VM to boot.\\
+
+\verb|ex\_stop\_node()| & Used to direct a VM to begin shutdown gracefully.\\
+
+\verb|destroy\_node()| & Used to delete a VM and will return success. This method is
 one where human error can lead to significant damages and leveraging REST, the
 solution can confirm deletion with a user or restrict deletion. It also can
 simply ensure virtual machines actually are deleted after a certain threshold
 as
 it is common for human-generated virtual machines to be left running that leads
-to unwarranted costs. &
-\verb|destroy\_node()|\\
- Get Volume ID & Used to enumerate the unique identifier for cloud storage
-typically used by a VM & \verb|ex\_get\_volume()|\\
- Create new volume & Used to add addtional storage to a VM &
-\verb|create\_volume()|\\
- Create new snapshot & Used to take a recovery image of a VM for restoration
-purposes & \verb|create\_volume\_snapshot()|\\
- Destroy a volume or snapshot & Used to delete storage or snapshot to recover
-storage space & \verb|destroy\_volume()|\\
-  \bottomrule
- \end{tabular}%
- }
+to unwarranted costs.\\
+
+\verb|ex\_get\_volume()| & Used to enumerate the unique identifier for cloud storage
+typically used by a VM.\\
+
+\verb|create\_volume()| & Used to add addtional storage to a VM.\\
+
+\verb|create\_volume\_snapshot()| & Used to take a recovery image of a VM for restoration
+purposes.\\
+
+\verb|destroy\_volume()| & Used to delete storage or snapshot to recover
+storage space.\\
+
+ \end{tabular}
  \end{table}
 \end{verbatim}
 
