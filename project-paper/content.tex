@@ -261,7 +261,8 @@ and
 scalability to add more cloud implementations. Service will encapsulate various
 cloud implementations regardless of their operating difference and provides a
 one-stop solution.
-A high-level depiction of the architecture along with requisite functions are shown in
+A high-level depiction of the architecture along with requisite functions are
+shown in
 Figure~\ref{F:arch}.
 
 \begin{figure}[!ht]
@@ -270,8 +271,10 @@ Figure~\ref{F:arch}.
   \caption{Project Architecture}\label{F:arch}
 \end{figure}
 
-A layered approach was used so that a new implementation could be easily integrated into
-the solution. Figure~\ref{F:layerd-arch} depicts the layered approach for this service.
+A layered approach was used so that a new implementation could be easily
+integrated into
+the solution. Figure~\ref{F:layerd-arch} depicts the layered approach for this
+service.
 
 \begin{figure}[!ht]
   \centering
@@ -404,7 +407,8 @@ portability can improve application development speed.
 \subsection{Code Organization}
 
 
-The code related to the project is organized as described in Figure \ref{c:code-structure}
+The code related to the project is organized as described in
+Figure~\ref{c:code-structure}
 \begin{figure}[htb]
 \begin{verbatim}
 code
@@ -435,23 +439,29 @@ container.
 \item \emph{Dockerfile} - builds docker container
 \item \emph{compute-storage.yml} - contains Swagger REST service
 specification
-\item \emph{etc} - this directory contains all configuration related files. \emph{credentials.yml} file contains
+\item \emph{etc} - this directory contains all configuration related files.
+\emph{credentials.yml} file contains
 authentication information required by AWS, AZURE, and Google
-cloud. This directory also contains key file required by Google cloud for the connection.
+cloud. This directory also contains key file required by Google cloud for the
+connection.
 \item \emph{aws} - this directory contains Swagger controllers 
 and python scripts for various operations on Amazon AWS cloud services
 \item \emph{azure} - this directory contains Swagger controllers
 and python scripts for various operations on Azure cloud services
 \item \emph{google} - this directory contains Swagger controllers
 and python scripts for various operations on Google cloud services
-\item \emph{benchmarking.sh} - this script contains commands to generate data for benchmarking
+\item \emph{benchmarking.sh} - this script contains commands to generate data
+for benchmarking
 \end{itemize}
 
 \subsection{Deployment}
 
 The Swagger service can be deployed as docker container or
 standalone service on any server type. The Makefile contains commands to 
-build and run the docker container. Makefile also contains commands to build the Swagger service and start Swagger service as a standalone application. Once the service is deployed, it can be accessed through any browser or curl-like utility.
+build and run the docker container. Makefile also contains commands to build
+the Swagger service and start Swagger service as a standalone application. Once
+the service is deployed, it can be accessed through any browser or curl-like
+utility.
 
 
 \subsection{Usage}
@@ -459,22 +469,29 @@ build and run the docker container. Makefile also contains commands to build the
 There are certain pre-requisites for each cloud to use
 this REST service.
 \begin{itemize}
-\item \emph{AWS} - AWS account along with access key and a secret key is required to connect AWS cloud.
+\item \emph{AWS} - AWS account along with access key and a secret key is
+required to connect AWS cloud.
 \item \emph{Azure}
-Azure tenant ID, subscription ID, application id and password is required to connect Azure cloud.
+Azure tenant ID, subscription ID, application id and password is required to
+connect Azure cloud.
 \item \emph{Google}
-Google service account ID, project ID along with key file is required to connect Google cloud.
+Google service account ID, project ID along with key file is required to
+connect Google cloud.
 \end{itemize}
-This information should be kept confidential and need to be configured in the yml file under the etc directory. The key file generated for Google cloud will also need to be kept in this directory. Default VM parameters like image, size, and region can be specified in the configuration and Swagger specification file.
+This information should be kept confidential and need to be configured in the
+yml file under the etc directory. The key file generated for Google cloud will
+also need to be kept in this directory. Default VM parameters like image, size,
+and region can be specified in the configuration and Swagger specification
+file.
 
-Table\ref{t:serviceFunctions} describes functions provided by the Swagger service.
+Table\ref{t:serviceFunctions} describes functions provided by the Swagger
+service.
 \begin{table}[htb]
 \centering
-\caption{Service Calls}
-\label{t:serviceFunctions}
+\caption{Service Calls}\label{t:serviceFunctions}
 \begin{tabular} {p{5cm}|p{3.5cm}}
 Path & Description \\
-\hline
+\toprule
 /compute/aws/ec2    & Creates AWS VM \\
 /compute/aws/ec2/findByRegion & List AWS VMs based on region \\
 /compute/aws/ec2/\{vmname\} & Get AWS VM details by VM Name \\
@@ -487,7 +504,8 @@ Path & Description \\
 /storage/aws/s3/\{bucketName\} & List all files inside the bucket \\
 /storage/aws/s3/\{bucketName\}/ deleteFile & Delete file from bucket \\
 /storage/aws/s3/\{bucketName\}/ uploadFile & Upload file to AWS S3 bucket \\
-/storage/aws/s3/\{bucketName\}/ downloadFile & Download file from S3 to the download directory \\
+/storage/aws/s3/\{bucketName\}/ downloadFile & Download file from S3 to the
+/download directory \\
 /compute/azure/createvm & Create VM on Azure cloud \\
 /compute/azure/deletevm & Delete or teminate Azure VM \\
 /compute/azure/startvm & Start Azure VM \\
@@ -573,43 +591,53 @@ customized use.
 \begin{tabular} {p{5cm}|p{3.5cm}}
 Command & Description \\
 \hline
-\verb|libcloud.get\_driver()| & How to choose the primary cloud provider that will be used by
+\verb|libcloud.get\_driver()| & How to choose the primary cloud provider that
+will be used by
 following functions. We leveraged Amazon Web Services, Microsoft Azure and
 Google Cloud as targets for this method.\\
 
-\verb|dns()| & Used to configure DNS for compute resources. This is an example of a
+\verb|dns()| & Used to configure DNS for compute resources. This is an example
+of a
 late-stage call to further define how a virtual machine should be configured.\\
 
-\verb|get\_driver\_lb()| & Used to configure load balancing for compute resources. This
+\verb|get\_driver\_lb()| & Used to configure load balancing for compute
+resources. This
 field is a great example of the power of cloud computing and RESTful API as
 redundant, highly available virtual machines can be built quickly and if you
 choose, by default.\\
 
-\verb|list\_nodes()| & Used to enumerate the nodes already created within the cloud
+\verb|list\_nodes()| & Used to enumerate the nodes already created within the
+cloud
 provider. This call can be automated to routinely audit usage of virtual
 machines to identify trends for usage.\\
 
-\verb|list\_sizes()| & Used to enumerate the size of the VM and supporting components.
+\verb|list\_sizes()| & Used to enumerate the size of the VM and supporting
+components.
 This method is commonly used to reduce costs and identify VMs that may have
 grown beyond a comfortable level.\\
 
-\verb|list\_images()| & Used to enumerate the avaiable, deployable images the cloud
+\verb|list\_images()| & Used to enumerate the avaiable, deployable images the
+cloud
 provider makes available. This parameter is typically used before a call to
 generate a virtual machine to ensure the image is still provided by the cloud
 provider.\\
 
-\verb|get\_image()| & Used to pull the unique identifier for the human-readable name
+\verb|get\_image()| & Used to pull the unique identifier for the human-readable
+name
 for the chosen image\\
 
-\verb|ex\_get\_node()| & Used to pull the unique identifier for one or many VMs.\\
+\verb|ex\_get\_node()| & Used to pull the unique identifier for one or many
+VMs.\\
 
-\verb|create\_node()| & Used in conjuection with image listing to deploy a new VM.\\
+\verb|create\_node()| & Used in conjuection with image listing to deploy a new
+VM.\\
 
 \verb|ex\_start\_node()| & Used to tell a previously built VM to boot.\\
 
 \verb|ex\_stop\_node()| & Used to direct a VM to begin shutdown gracefully.\\
 
-\verb|destroy\_node()| & Used to delete a VM and will return success. This method is
+\verb|destroy\_node()| & Used to delete a VM and will return success. This
+method is
 one where human error can lead to significant damages and leveraging REST, the
 solution can confirm deletion with a user or restrict deletion. It also can
 simply ensure virtual machines actually are deleted after a certain threshold
@@ -617,12 +645,14 @@ as
 it is common for human-generated virtual machines to be left running that leads
 to unwarranted costs.\\
 
-\verb|ex\_get\_volume()| & Used to enumerate the unique identifier for cloud storage
+\verb|ex\_get\_volume()| & Used to enumerate the unique identifier for cloud
+storage
 typically used by a VM.\\
 
 \verb|create\_volume()| & Used to add addtional storage to a VM.\\
 
-\verb|create\_volume\_snapshot()| & Used to take a recovery image of a VM for restoration
+\verb|create\_volume\_snapshot()| & Used to take a recovery image of a VM for
+restoration
 purposes.\\
 
 \verb|destroy\_volume()| & Used to delete storage or snapshot to recover
@@ -674,7 +704,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -830,7 +860,14 @@ AWS trailed both with an average creation time of 37.6 seconds.
 
 \subsection{Storage - Create}~\ref{F:vm-volume}.
 
-For the creation of storage, AWS was significantly faster than the other two providers. AWS was able to create a 1 GB volume and return success within 1.8s. Azure was slower at 15.4s yet Google was markedly much slower with an average speed of 126.7. Where Google was the fastest solution to create a new virtual machine, the ability to rapidly deploy additional storage was found to be a weakness of the Google cloud provider. We do not perceive it to be an issue with how Libcloud requests storage from Google and it is attributed to Google directly.
+For the creation of storage, AWS was significantly faster than the other two
+providers. AWS was able to create a 1 GB volume and return success within 1.8s.
+Azure was slower at 15.4s yet Google was markedly much slower with an average
+speed of 126.7. Where Google was the fastest solution to create a new virtual
+machine, the ability to rapidly deploy additional storage was found to be a
+weakness of the Google cloud provider. We do not perceive it to be an issue
+with how Libcloud requests storage from Google and it is attributed to Google
+directly.
 
 \begin{figure}[!ht]
   \centering
@@ -840,7 +877,10 @@ For the creation of storage, AWS was significantly faster than the other two pro
 
 \subsection{Virtual Machine - Delete}~\ref{F:vm-delete}.
 
-For the rapid decommissioning or clean up of virtual machines, AWS was also found to be remarkably fast. Libcloud had success with all three vendors with AWS on average reporting a virtual machine had been deleted in 3.2s. Google came in next with an average of 87s and Azure was the slowest at 199.3s.
+For the rapid decommissioning or clean up of virtual machines, AWS was also
+found to be remarkably fast. Libcloud had success with all three vendors with
+AWS on average reporting a virtual machine had been deleted in 3.2s. Google
+came in next with an average of 87s and Azure was the slowest at 199.3s.
 
 \begin{figure}[!ht]
   \centering
@@ -857,17 +897,22 @@ well-documented leveraging Swagger. The solutions combined to provide a
 solution that hides the intricacies of knowing how to use each vendor's API and
 the verbiage they use to explain different types of cloud resources. 
 
-While libcloud works well with all the three vendors Amazon, Microsoft and Google,
+While libcloud works well with all the three vendors Amazon, Microsoft and
+Google,
 there are certain functions that are available only for AWS such as uploading
-a file or downloading a file. Libcloud integration with Google is straightforward
+a file or downloading a file. Libcloud integration with Google is
+straightforward
 and the API functions operate over string parameters whereas for Azure a Node
 object has to be passed and returned in most cases. Implementation with Azure
-especially required the use of a hidden or internal function usage in one of the
-cases. Due to this constraint, time to integrate Azure was significantly higher as compared
+especially required the use of a hidden or internal function usage in one of
+the
+cases. Due to this constraint, time to integrate Azure was significantly higher
+as compared
 to AWS or Azure.
 
 The use of boto3 became challenging in relation to Google Cloud. In concurrency
-with what the technology review stressed~\cite{hid-sp18-518-DataMotion}, the use of proprietary utilities like
+with what the technology review stressed~\cite{hid-sp18-518-DataMotion}, the
+use of proprietary utilities like
 gsutil limited what we can develop. Boto3 development was successful with AWS
 resources yet at boto3 is the underlying technology for AWS utilities, the
 value-add was limited to converting boto3 calls for AWS into a RESTful API.
@@ -901,7 +946,7 @@ Project Paper - Michael Robinson & Harshad Pitkar & Sushant Athaley
 Code is checked-in in Github at location \\
 https://github.com/cloudmesh-community/hid-sp18-518/tree/master\\
 /project-code \\
-
+/
 \begin{acks}
 
   The authors would like to thank Dr.~Gregor~von~Laszewski for his
