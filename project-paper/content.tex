@@ -354,9 +354,9 @@ as the application data itself, where the ``PaaS service may provide instances
 of databases ready-to-use, in which case the actual databases provided may be
 sensitive to the data syntax of the customer
 data.''~\cite{hid-sp18-518-Cloud-Council} The syntactic element is also where
-we
-will highlight issues for cross-platform support in instances where the target
-provider either does not have API support or libcloud does not support yet.
+we will highlight issues for cross-platform support in instances where the
+target provider either does not have API support or libcloud does not support
+yet.
 
 To experiment, we leveraged the following resources.
 
@@ -375,8 +375,7 @@ skew towards the strengths and weaknesses of each provider. AWS is considered
 the most mature provider with a very deep API offering where solutions like
 Azure are making progress. Alternatively, Data Motion states ``Google developed
 the Kubernetes standard that AWS and Azure now offer and GCP specializes in
-high
-compute offerings like Big Data, analytics and machine
+high compute offerings like Big Data, analytics and machine
 learning.''\cite{hid-sp18-518-DataMotion}
 
 \begin{figure}[!ht]
@@ -416,8 +415,7 @@ A Python example for leveraging libcloud to list available containers in an AWS
 S3 instance is shown below. The key steps are importing the libraries and
 leveraging the functions that enable connectivity, authentication and
 authorization. Once that is complete, you can pull or push information using
-the
-family of functions that are available in Libcloud for your flavor of cloud
+the family of functions that are available in Libcloud for your flavor of cloud
 provider, in this instance which is AWS.
 
 \begin{figure}[htb]
@@ -555,7 +553,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # # # 
+# # # # # # # # # # # # # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -641,9 +639,8 @@ blob_container):
 \end{figure}	
 
 The error handling by the script provides the user feedback on what happened
-and
-how to resolve. A future enhancement would be to map the method return back to
-the RESTful API and the error could be presented to the user in the user
+and how to resolve. A future enhancement would be to map the method return back
+to the RESTful API and the error could be presented to the user in the user
 interface they are using to leverage the API. When the method works correctly,
 the parameters passed into the method could be leveraged to confirm the correct
 virtual machine was created and also used to enhance the message sent back to
@@ -658,16 +655,21 @@ complete when libcloud interprets the cloud provider response and returns it.
 For the benchmarking, a series of ten tests were performed per method per the
 three cloud providers. The output for the benchmarks were captured for later
 visualizations to interpret how well libcloud works for different types of
-requests and for
-different providers.
-
+requests and for different providers. All three providers successfully
+generated virtual machines, as expected, with the parameters provided.
+Additionally, libcloud abstracted the syntax successfully for all three
+providers. 
 
 \subsection{Virtual Machine - Start}~\ref{F:vm-start}.
 
-Average duration Start VM for 
-AWS is 16.4 seconds
-Azure is 26
-Google is 23.4
+It was also observed that all three providers were able to execute quickly
+across all 10 tests. AWS was benchmarked as the leader of the three with an
+average execution time of 16.4 seconds. AWS was surprisingly able to still be
+the leader on average with a significant outlier in the dataset where one test
+took 148 seconds to complete. The other two providers, Google and
+Azure, started up in 23.4s and 26s respectively. Out of the five benchmarks,
+starting a virtual machine when using libcloud was one of two metrics that had
+two providers average within a reasonable range of each other. 
 
 \begin{figure}[!ht]
   \centering
@@ -677,10 +679,12 @@ Google is 23.4
 
 \subsection{Virtual Machine - Stop}~\ref{F:vm-stop}.
 
-Average duration Stop VM for 
-AWS is 21.9 seconds
-Azure is 60.9
-Google is 62.4
+For the stopping of virtual machines, AWS again was the clear leader in
+performance. Libcloud, on average, reported a successful stop of a virtual
+machine in 21.9s. For Azure, the average result was 60.9s which was marginally
+better than the average for Google of 62.4s. Similar to the starting of virtual
+machines, there was a clear leader and the other two providers compared evenly
+with each other.
 
 \begin{figure}[!ht]
   \centering
@@ -690,10 +694,13 @@ Google is 62.4
 
 \subsection{Virtual Machine - Create}~\ref{F:vm-create}.
 
-Average duration Create VM for 
-AWS is 37.6 seconds
-Azure is 27.5
-Google is 12.4
+The creation of virtual machines is where a new leader is presented with
+Google. This was expected as marketing for Google implies they are very
+efficient at horizontal scaling and rapid deployment of net new virtual
+machines and containers. Google was found to be able to generate a new virtual
+machine in 12.4s, which is half the time it takes compared to 27.5s from Azure.
+AWS trailed both with an average creation time of 37.6 seconds.
+
 
 \begin{figure}[!ht]
   \centering
@@ -728,27 +735,19 @@ Google is 87
 \end{figure}
 
 \section{Results}
-We had success leverage libcloud to generate and control the execution of cloud
-resources with Amazon Web Services and Microsoft Azure. We were able to
-abstract
-away from native API calls for a cloud provider. Additionally, we were able to
-map the Python scripts leveraging libcloud into RESTful APIs that were
+We had success leveraging libcloud to generate and control the execution of
+cloud resources with Amazon Web Services and Microsoft Azure. We were able to
+abstract away from native API calls for a cloud provider. Additionally, we were
+able to map the Python scripts leveraging libcloud into RESTful APIs that were
 well-documented leveraging Swagger. The solutions combined to provide a
-solution
-that hides the intricacies of knowing how to use each vendor's API and the
-verbiage they use to explain different types of cloud resources.  
+solution that hides the intricacies of knowing how to use each vendor's API and
+the verbiage they use to explain different types of cloud resources.  
 
 The use of boto3 became challenging in relation to Google Cloud. In concurrency
 with what the technology review stressed, the use of proprietary utilities like
 gsutil limited what we can develop. Boto3 development was successful with AWS
 resources yet at boto3 is the underlying technology for AWS utilities, the
 value-add was limited to converting boto3 calls for AWS into a RESTful API.
-
-Other Successes
-
-Other Challenges
-
-Comparison of command line tools to Python libraries libcloud and boto3
 
 \section{Conclusion}
 
