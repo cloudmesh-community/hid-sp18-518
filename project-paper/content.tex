@@ -555,7 +555,7 @@ $ python boto_ec2.py <off> <instance id>
 
 # Add below code to a file named boto_ec2.py
 # 
-# # # # # 
+# # # # # # # 
 import boto3
 
 action = sys.argv[1].upper()
@@ -655,12 +655,19 @@ A benchmarking shell script is provided that tests the timing performance
 between the cloud providers when leveraging libcloud. The script would initiate
 the measurement when the API call is made and then consider the request
 complete when libcloud interprets the cloud provider response and returns it.
-The output for the benchmarks were captured for later visualizations to
-interpret how well libcloud works for different types of requests and for
+For the benchmarking, a series of ten tests were performed per method per the
+three cloud providers. The output for the benchmarks were captured for later
+visualizations to interpret how well libcloud works for different types of
+requests and for
 different providers.
 
 
-About option A~\ref{F:vm-start}.
+\subsection{Virtual Machine - Start}~\ref{F:vm-start}.
+
+Average duration Start VM for 
+AWS is 16.4 seconds
+Azure is 26
+Google is 23.4
 
 \begin{figure}[!ht]
   \centering
@@ -668,7 +675,12 @@ About option A~\ref{F:vm-start}.
   \caption{VM starting benchmark}\label{F:vm-start}
 \end{figure}
 
-About option B~\ref{F:vm-stop}.
+\subsection{Virtual Machine - Stop}~\ref{F:vm-stop}.
+
+Average duration Stop VM for 
+AWS is 21.9 seconds
+Azure is 60.9
+Google is 62.4
 
 \begin{figure}[!ht]
   \centering
@@ -676,7 +688,12 @@ About option B~\ref{F:vm-stop}.
   \caption{VM stopping benchmark}\label{F:vm-stop}
 \end{figure}
 
-About option C~\ref{F:vm-create}.
+\subsection{Virtual Machine - Create}~\ref{F:vm-create}.
+
+Average duration Create VM for 
+AWS is 37.6 seconds
+Azure is 27.5
+Google is 12.4
 
 \begin{figure}[!ht]
   \centering
@@ -684,7 +701,12 @@ About option C~\ref{F:vm-create}.
   \caption{VM creation benchmark}\label{F:vm-create}
 \end{figure}
 
-About option D~\ref{F:vm-volume}.
+\subsection{Storage - Create}~\ref{F:vm-volume}.
+
+Average duration Create volume for 
+AWS is  1.8 seconds
+Azure is 15.4
+Google is 126.7
 
 \begin{figure}[!ht]
   \centering
@@ -692,7 +714,12 @@ About option D~\ref{F:vm-volume}.
   \caption{Volume creation benchmark}\label{F:vm-volume}
 \end{figure}
 
-About option E~\ref{F:vm-delete}.
+\subsection{Virtual Machine - Delete}~\ref{F:vm-delete}.
+
+Average duration Delete VM for 
+AWS is  3.2 seconds
+Azure is 199.3
+Google is 87
 
 \begin{figure}[!ht]
   \centering
