@@ -1,6 +1,6 @@
 % status: 100
 % chapter: Amazon
-
+% 
 \title{AWS CloudTrail}
 
 \author{Michael Robinson}
@@ -48,7 +48,8 @@ you certainty that you know when changes occur.
 
 CloudTrail is a scalable, extensible and simplied logging service available 
 in AWS to be used to log all actions taken by multiple aspects of interacting
-with AWS\@. In AWS, one of the primary means of providing logging is through AWS 
+with AWS\@. In AWS, one of the primary means of providing logging is through
+AWS 
 CloudTrail. Amazon explains it as a service that enables governance, 
 compliance, operational auditing, and risk auditing of your AWS 
 account~\cite{hid-sp18-518-CloudTrail-user-guide}. To simplify, AWS provides 
@@ -73,12 +74,15 @@ account/region/date and each day will have its own path.  The filename of the
 compressed file follows a convention of account/region/timestamp. 
 
 \begin{figure}[!ht]
-	\centering\includegraphics[width=\columnwidth]{images/Cloudtrail-How-it-works.png}
-	\caption{CloudTrail~\cite{hid-sp18-518-CloudTrail-CloudFormation-Image}}\label{f:CloudTrail}
+	\centering\includegraphics[width=\columnwidth]{images/Cloudtrail-How-it-
+works.png}
+	\caption{CloudTrail~\cite{hid-sp18-518-CloudTrail-CloudFormation-Image}}\
+label{f:CloudTrail}
 \end{figure}
 
 The default path of account to region may not work well for a multi-account, 
-multi-region AWS instance. There are options to define logging for multi-region 
+multi-region AWS instance. There are options to define logging for multi-region
+
 where the configuration can be applied to all known existing regions and even 
 configured to include new ones when they come online by 
 default~\cite{hid-sp18-518-CloudTrail-global-events}. Additionally, 
@@ -92,13 +96,15 @@ those assets.
 
 To manage CloudTrail, you can use the AWS command line interface, RESTful APIs
 or a software development kit for Python, Java or multiple other languages. 
-These methods will allow you to make view the existing logs, which are natively 
+These methods will allow you to make view the existing logs, which are natively
+
 built in for you for the first 90 days. The management interfaces also allow
 you configure which S3 bucket to use, prefixes you may wish for organization, 
 encryption keys to be used as well as more complex features like custom event
 notifications to solutions like email, Slack channels or a text message.
 
-The AWS command line environment is the most full-featured. To do so, you first 
+The AWS command line environment is the most full-featured. To do so, you first
+
 will need credentials for an active AWS account. As credential management can 
 be its own comlex topic,  the AWS configuration guide should be leveraged to 
 provide a step by step to configure credentials. The simplest way to set up a 
@@ -121,9 +127,11 @@ the actions currently available to be called.
 \item StopLogging
 \end{itemize}
 
-If you used the API call, the response from a successful query will respond with 
+If you used the API call, the response from a successful query will respond
+with 
 a 200 HTTP status code and a JSON blob with the requested content. For example,
-when using LookupEvents, the response back for a query related to a user would be 
+when using LookupEvents, the response back for a query related to a user would
+be 
 include the following details.
 
 \begin{itemize}
@@ -142,7 +150,8 @@ include the following details.
 
 Another solution you can use are called AWS Quick 
 Starts~\cite{hid-sp18-518-CloudTrail-Quick-Starts} which can reduce error 
-caused by manual implementation. The command create-subscription will automate the 
+caused by manual implementation. The command create-subscription will automate
+the 
 creation of an S3 bucket and will begin the login. AWS provides these prebuilt
 solutions for customers who may not feel comfortable with using AWS or want
 to try a solution out before configuring on their own.
@@ -159,15 +168,20 @@ To ensure no one can  accidentally delete your CloudTrail logs,
 it is important to leverage features in Identity and Access Management. With 
 Identity and Access Management, you can grant access per user on who is 
 authorized to read logs stored in the CloudTrail S3 bucket 
-or who can make changes to the CloudTrail configuration. It is also recommended 
+or who can make changes to the CloudTrail configuration. It is also recommended
+
 to leverage features like Multi-Factor Authentication, which can be used to 
 ensure that a request to delete an S3 bucket for CloudTrail logs is 
 legitimate~\cite{hid-sp18-518-CloudTrail-user-guide}. 
 
-Another aspect where Identity and Access Management can help you with CloudTrail 
-is ensuring the logs are owned by a service account. Access requests to the log 
-data can be controlled by only authorizing access by log analysis and correlation 
-service accounts and a human would never had direct access to the logs stored in 
+Another aspect where Identity and Access Management can help you with
+CloudTrail 
+is ensuring the logs are owned by a service account. Access requests to the log
+
+data can be controlled by only authorizing access by log analysis and
+correlation 
+service accounts and a human would never had direct access to the logs stored
+in 
 S3. This helps ensure access control is not lost if your organizational use of 
 AWS Identity and Access Management continues to grow. 
 
@@ -177,32 +191,40 @@ per user on who is authorized to read logs stored in the CloudTrail S3 bucket
 or who can make changes to the CloudTrail configuration. 
 
 The CloudTrail log integrity solution is a process which will create hashes 
-for the current log metadata and appends some information from the previous log 
+for the current log metadata and appends some information from the previous log
+
 archive. That way you can walk back the integrity of your logs and quickly 
 identify which log was tampered with. The log validation service also provides 
 you a tool to assist with validation and you just need to provide it a time 
 range to validate~\cite{hid-sp18-518-CloudTrail-log-sharing}.
 
-It may also be salient to ensure proper encryption of your log files if a mistake
+It may also be salient to ensure proper encryption of your log files if a
+mistake
 happens, like the S3 bucket being made public. This is done using AWS Key
 Management System~\cite{hid-sp18-518-CloudTrail-KMS} which allows you to 
 leverage AWS to manage encryption and key management. Encryption itself is 
-difficult to implement and even more difficult to implement well. Leveraging the 
-CloudTrail integration with AWS Key Management System will ensure encryption is 
+difficult to implement and even more difficult to implement well. Leveraging
+the 
+CloudTrail integration with AWS Key Management System will ensure encryption is
+
 done properly and is easy for you to implement and manage. You can use the 
-CloudTrail console to configure which key pair to use, and you can use a key pair
+CloudTrail console to configure which key pair to use, and you can use a key
+pair
 across a multi-region CloudTrail environment.
 
-When encryption through KMS is used, CloudTrail will send a request to KMS for a
+When encryption through KMS is used, CloudTrail will send a request to KMS for
+a
 one-time key pair to encrypt with. The keys are used to encrypt the individual
-zipped file and then the keys are destroyed. There are some additional steps taken
+zipped file and then the keys are destroyed. There are some additional steps
+taken
 to append the key to the zipped log file. This is done so each log file is 
 individually encrypted and only a compromise of the master key would undo the 
 security of all log files.
 
 \section{How to view the logs}
 
-The most common method to review the logs is with the AWS command line interface. 
+The most common method to review the logs is with the AWS command line
+interface. 
 It is used by leveraging the AWS logs function and the accompanying parameters.
 While useful, this is typically used for singular queries and is difficult to
 use for more in-depth uses of the log files. For a broader investigation, there
@@ -214,7 +236,8 @@ instance may be useful. To begin, you would need to configure architecture to
 consume and post-process the data placed by CloudTrail into the S3 bucket. The 
 log files will need to be unzipped and transformed from JSON into Spark data 
 frames. There is sample code published by AWS Labs, which makes beta AWS 
-products, that can provide a starter pack~\cite{hid-sp18-518-CloudTrail-timely}.
+products, that can provide a starter
+pack~\cite{hid-sp18-518-CloudTrail-timely}.
 
 Once you have the logs formatted in a manner that can be leveraged, you can
 find containers available running Apache Spark that can access S3 buckets. This
