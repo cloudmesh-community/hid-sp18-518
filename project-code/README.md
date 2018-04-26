@@ -1,6 +1,7 @@
 Instructions for docker installation
 
-    Create and Start docker container using make command. It uses docker compose to launch swagger server and MongoDB server in the same container. You will need Docker and Docer Compose installed. Instructions to install docker compose can be found at https://docs.docker.com/compose/install/
+Create and Start docker container using make command. 
+
         make docker-start
 
     Test the service using following curl commands
