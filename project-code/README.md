@@ -1,41 +1,57 @@
-Instructions for docker installation
+# Leveraging REST for cloud portability
+  
+## Pre-requisits
 
-Create and Start docker container using make command. 
+* You should have account with AWS, Azure and Google cloud
+* Modify credentials.yml file under etc directory to include configuration information
+* Replace TBD information in the file with appropriate credentail information
+* Copy key file required by Google cloud under etc directory
 
-        make docker-start
+## Instructions for docker installation
 
-    Test the service using following curl commands
-        make test
+* Create and Start docker container using make command.
+  
+  * ```make docker-start```
 
-    Stop the service using following commands
-        make docker-stop
+* Test the service using following curl commands
+  
+  * ```make testaws```
+  * ```make testazure```
+  * ```make testgoogle```
+  
+* Stop the service using following commands
+  
+  * ```make docker-stop```
 
-Instructions for ubuntu without docker
+	
+## Instructions for ubuntu without docker
 
-    you should be running this program in python 2 environment.
+* you should be running this program in python 2 environment.
 
-    you should have default-jre installed.
+* you should have default-jre installed.
 
-    you should have mongoDB installed.
+* git clone the project.
 
-    git clone the project.
+* change the directory to project-code folder
 
-    change the directory to swagger folder
+* create the swagger server with following command
+  
+  * ```make service```
 
-    create the swagger server with following command
-        make service
+* run the swagger server with following command
+  
+  * ```make start```
 
-    run the swagger server with following command
-        make start
+* test the program using following command
+  
+  * ```make testaws```
+  * ```make testazure```
+  * ```make testgoogle```
 
-    start mongodb with following command
-        make startdb
+* stop the service using following command
+  
+  * ```make stop```
 
-    test the program using following command
-        make test
-
-    stop the service using following command
-        make stop
-
-    clean the server and client codes using following command
-        make clean
+* clean the server and client codes using following command
+  
+  * ```make clean```
