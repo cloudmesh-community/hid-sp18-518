@@ -2,9 +2,9 @@
   
 ## Pre-requisits
 
-* You should have account with AWS, Azure and Google cloud
-* Modify credentials.yml file under etc directory to include configuration information
-* Replace TBD information in the file with appropriate credentail information
+* You should have an account with AWS, Azure and Google cloud
+* Modify credentials.yml file under the etc directory to include configuration information
+* Replace TBD information in the file with appropriate credential information
 * Copy key file required by Google cloud under etc directory
 
 ## Instructions for docker installation
@@ -23,35 +23,35 @@
   
   * ```make docker-stop```
 
-	
-## Instructions for ubuntu without docker
+    
+## Instructions for Ubuntu without docker
 
-* you should be running this program in python 2 environment.
+* you should be running this program in Python 2 environment.
 
 * you should have default-jre installed.
 
 * git clone the project.
 
-* change the directory to project-code folder
+* change directory to the project-code folder
 
-* create the swagger server with following command
+* create the swagger server with the following command
   
   * ```make service```
 
-* run the swagger server with following command
+* run swagger server with the following command
   
   * ```make start```
 
-* test the program using following command
+* test program using the following command
   
   * ```make testaws```
   * ```make testazure```
   * ```make testgoogle```
 
-* stop the service using following command
+* stop service using the following command
   
   * ```make stop```
 
-* clean the server and client codes using following command
+* clean server and client codes using the following command
   
   * ```make clean```
