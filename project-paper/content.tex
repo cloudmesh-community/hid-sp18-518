@@ -806,319 +806,40 @@ providers. Table\ref{t:benchmarking} shows the benchmarking test results.
 \begin{table}[htb]
 \centering
 \caption{Benchmarking Test Results}\label{t:benchmarking}
-\begin{tabular} {p{3cm}|p{3cm}|p{5cm}|p{3cm}}
-Cloud Provider & Type & Operation Name & Duration (secs) \\
+\begin{tabular} {p{3cm}|p{5cm}|p{3cm}|p{3cm}|p{3cm}}
+Cloud Name & Operation Type & Mean(s) & Median(s) & Standard Deviation(s) \\
 \toprule
-AWS & Compute & Create VM & 75 \\
-AWS & Compute & List VM & 179 \\
-AWS & Compute & Get VM Details & 5 \\
-AWS & Compute & Stop VM & 13  \\
-AWS & Compute & Start VM & 5  \\
-AWS & Compute & Delete VM & 7  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 0  \\
-AWS & Storage & List Vol/Bucket Details & 1  \\
-AWS & Storage & Download File from S3 & 0  \\
-AWS & Storage & Delete S3 File & 1  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 33  \\
-AWS & Compute & List VM & 47  \\
-AWS & Compute & Get VM Details & 11  \\
-AWS & Compute & Stop VM & 159  \\
-AWS & Compute & Start VM & 4  \\
-AWS & Compute & Delete VM & 14  \\
-AWS & Storage & Get Vol/Bucket Details & 3  \\
-AWS & Storage & Create Vol/Bucket & 7  \\
-AWS & Storage & Upload File to S3 & 1  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 1  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 40  \\
-AWS & Compute & List VM & 2  \\
-AWS & Compute & Get VM Details & 56  \\
-AWS & Compute & Stop VM & 40  \\
-AWS & Compute & Start VM & 148  \\
-AWS & Compute & Delete VM & 5  \\
-AWS & Storage & Get Vol/Bucket Details & 12  \\
-AWS & Storage & Create Vol/Bucket & 5  \\
-AWS & Storage & Upload File to S3 & 6  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 1  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 30  \\
-AWS & Compute & List VM & 0  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 0  \\
-AWS & Storage & Get Vol/Bucket Details & 1  \\
-AWS & Storage & Create Vol/Bucket & 0  \\
-AWS & Storage & Upload File to S3 & 1  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 1  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 32  \\
-AWS & Compute & List VM & 0  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 0  \\
-AWS & Storage & List Vol/Bucket Details & 1  \\
-AWS & Storage & Download File from S3 & 0  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 33  \\
-AWS & Compute & List VM & 1  \\
-AWS & Compute & Get VM Details & 0  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 1  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 0  \\
-AWS & Storage & Delete S3 File & 1  \\
-AWS & Storage & Delete Vol/Bucket & 0  \\
-AWS & Compute & Create VM & 35  \\
-AWS & Compute & List VM & 1  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 1  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 1  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 33  \\
-AWS & Compute & List VM & 1  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 2  \\
-AWS & Storage & Create Vol/Bucket & 0  \\
-AWS & Storage & Upload File to S3 & 1  \\
-AWS & Storage & List Vol/Bucket Details & 0  \\
-AWS & Storage & Download File from S3 & 1  \\
-AWS & Storage & Delete S3 File & 0  \\
-AWS & Storage & Delete Vol/Bucket & 1  \\
-AWS & Compute & Create VM & 34  \\
-AWS & Compute & List VM & 0  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 0  \\
-AWS & Storage & List Vol/Bucket Details & 1  \\
-AWS & Storage & Download File from S3 & 0  \\
-AWS & Storage & Delete S3 File & 1  \\
-AWS & Storage & Delete Vol/Bucket & 0  \\
-AWS & Compute & Create VM & 31  \\
-AWS & Compute & List VM & 0  \\
-AWS & Compute & Get VM Details & 1  \\
-AWS & Compute & Stop VM & 1  \\
-AWS & Compute & Start VM & 1  \\
-AWS & Compute & Delete VM & 1  \\
-AWS & Storage & Get Vol/Bucket Details & 0  \\
-AWS & Storage & Create Vol/Bucket & 1  \\
-AWS & Storage & Upload File to S3 & 0  \\
-AWS & Storage & List Vol/Bucket Details & 1  \\
-AWS & Storage & Download File from S3 & 0  \\
-AWS & Storage & Delete S3 File & 1  \\
-AWS & Storage & Delete Vol/Bucket & 0  \\
-Google & Compute & Create VM & 11  \\
-Google & Compute & List VM & 1  \\
-Google & Compute & Stop VM & 163  \\
-Google & Compute & Start VM & 13  \\
-Google & Compute & Delete VM & 154  \\
-Google & Storage & Create Vol/Bucket & 6  \\
-Google & Storage & Create Volume Snapshot & 32  \\
-Google & Storage & Delete Volume Snapshot & 89  \\
-Google & Storage & Delete Vol/Bucket & 7  \\
-Google & Compute & Create VM & 12  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 43  \\
-Google & Compute & Start VM & 21  \\
-Google & Compute & Delete VM & 70  \\
-Google & Storage & Create Vol/Bucket & 189  \\
-Google & Storage & Create Volume Snapshot & 13  \\
-Google & Storage & Delete Volume Snapshot & 4  \\
-Google & Storage & Delete Vol/Bucket & 6  \\
-Google & Compute & Create VM & 24  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 60  \\
-Google & Compute & Start VM & 9  \\
-Google & Compute & Delete VM & 58  \\
-Google & Storage & Create Vol/Bucket & 158  \\
-Google & Storage & Create Volume Snapshot & 126  \\
-Google & Storage & Delete Volume Snapshot & 118  \\
-Google & Storage & Delete Vol/Bucket & 8  \\
-Google & Compute & Create VM & 11  \\
-Google & Compute & List VM & 6  \\
-Google & Compute & Stop VM & 52  \\
-Google & Compute & Start VM & 22  \\
-Google & Compute & Delete VM & 46  \\
-Google & Storage & Create Vol/Bucket & 218  \\
-Google & Storage & Create Volume Snapshot & 13  \\
-Google & Storage & Delete Volume Snapshot & 4  \\
-Google & Storage & Delete Vol/Bucket & 6  \\
-Google & Compute & Create VM & 11  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 54  \\
-Google & Compute & Start VM & 21  \\
-Google & Compute & Delete VM & 53  \\
-Google & Storage & Create Vol/Bucket & 179  \\
-Google & Storage & Create Volume Snapshot & 14  \\
-Google & Storage & Delete Volume Snapshot & 3  \\
-Google & Storage & Delete Vol/Bucket & 6  \\
-Google & Compute & Create VM & 11  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 59  \\
-Google & Compute & Start VM & 20  \\
-Google & Compute & Delete VM & 53  \\
-Google & Storage & Create Vol/Bucket & 180  \\
-Google & Storage & Create Volume Snapshot & 12  \\
-Google & Storage & Delete Volume Snapshot & 3  \\
-Google & Storage & Delete Vol/Bucket & 6  \\
-Google & Compute & Create VM & 9  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 45  \\
-Google & Compute & Start VM & 21  \\
-Google & Compute & Delete VM & 54  \\
-Google & Storage & Create Vol/Bucket & 180  \\
-Google & Storage & Create Volume Snapshot & 10  \\
-Google & Storage & Delete Volume Snapshot & 4  \\
-Google & Storage & Delete Vol/Bucket & 6  \\
-Google & Compute & Create VM & 11  \\
-Google & Compute & List VM & 5  \\
-Google & Compute & Stop VM & 46  \\
-Google & Compute & Start VM & 57  \\
-Google & Compute & Delete VM & 76  \\
-Google & Storage & Create Vol/Bucket & 147  \\
-Google & Storage & Create Volume Snapshot & 14  \\
-Google & Storage & Delete Volume Snapshot & 5  \\
-Google & Storage & Delete Vol/Bucket & 7  \\
-Google & Compute & Create VM & 9  \\
-Google & Compute & List VM & 30  \\
-Google & Compute & Stop VM & 45  \\
-Google & Compute & Start VM & 11  \\
-Google & Compute & Delete VM & 158  \\
-Google & Storage & Create Vol/Bucket & 5  \\
-Google & Storage & Create Volume Snapshot & 14  \\
-Google & Storage & Delete Volume Snapshot & 4  \\
-Google & Storage & Delete Vol/Bucket & 7  \\
-Google & Compute & Create VM & 15  \\
-Google & Compute & List VM & 29  \\
-Google & Compute & Stop VM & 57  \\
-Google & Compute & Start VM & 39  \\
-Google & Compute & Delete VM & 148  \\
-Google & Storage & Create Vol/Bucket & 5  \\
-Google & Storage & Create Volume Snapshot & 13  \\
-Google & Storage & Delete Volume Snapshot & 4  \\
-Google & Storage & Delete Vol/Bucket & 7  \\
-Azure & Compute & Create VM & 5  \\
-Azure & Compute & List VM & 1  \\
-Azure & Compute & Stop VM & 13  \\
-Azure & Compute & Start VM & 23  \\
-Azure & Compute & Delete VM & 178  \\
-Azure & Storage & Create Vol/Bucket & 3  \\
-Azure & Storage & Create Volume Snapshot & 1  \\
-Azure & Storage & Delete Volume Snapshot & 0  \\
-Azure & Storage & Delete Vol/Bucket & 0  \\
-Azure & Compute & Create VM & 6  \\
-Azure & Compute & List VM & 1  \\
-Azure & Compute & Stop VM & 13  \\
-Azure & Compute & Start VM & 24  \\
-Azure & Compute & Delete VM & 177  \\
-Azure & Storage & Create Vol/Bucket & 1  \\
-Azure & Storage & Create Volume Snapshot & 0  \\
-Azure & Storage & Delete Volume Snapshot & 1  \\
-Azure & Storage & Delete Vol/Bucket & 0  \\
-Azure & Compute & Create VM & 147  \\
-Azure & Compute & List VM & 10  \\
-Azure & Compute & Stop VM & 154  \\
-Azure & Compute & Start VM & 24  \\
-Azure & Compute & Delete VM & 97  \\
-Azure & Storage & Create Vol/Bucket & 5  \\
-Azure & Storage & Create Volume Snapshot & 6  \\
-Azure & Storage & Delete Volume Snapshot & 0  \\
-Azure & Storage & Delete Vol/Bucket & 0  \\
-Azure & Compute & Create VM & 16  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 54  \\
-Azure & Compute & Start VM & 24  \\
-Azure & Compute & Delete VM & 240  \\
-Azure & Storage & Create Vol/Bucket & 5  \\
-Azure & Storage & Create Volume Snapshot & 13  \\
-Azure & Storage & Delete Volume Snapshot & 4  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 27  \\
-Azure & Compute & List VM & 1  \\
-Azure & Compute & Stop VM & 61  \\
-Azure & Compute & Start VM & 21  \\
-Azure & Compute & Delete VM & 199  \\
-Azure & Storage & Create Vol/Bucket & 117  \\
-Azure & Storage & Create Volume Snapshot & 128  \\
-Azure & Storage & Delete Volume Snapshot & 5  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 16  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 64  \\
-Azure & Compute & Start VM & 21  \\
-Azure & Compute & Delete VM & 248  \\
-Azure & Storage & Create Vol/Bucket & 5  \\
-Azure & Storage & Create Volume Snapshot & 12  \\
-Azure & Storage & Delete Volume Snapshot & 4  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 15  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 66  \\
-Azure & Compute & Start VM & 21  \\
-Azure & Compute & Delete VM & 216  \\
-Azure & Storage & Create Vol/Bucket & 4  \\
-Azure & Storage & Create Volume Snapshot & 13  \\
-Azure & Storage & Delete Volume Snapshot & 3  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 15  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 70  \\
-Azure & Compute & Start VM & 21  \\
-Azure & Compute & Delete VM & 217  \\
-Azure & Storage & Create Vol/Bucket & 5  \\
-Azure & Storage & Create Volume Snapshot & 10  \\
-Azure & Storage & Delete Volume Snapshot & 3  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 13  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 57  \\
-Azure & Compute & Start VM & 24  \\
-Azure & Compute & Delete VM & 214  \\
-Azure & Storage & Create Vol/Bucket & 4  \\
-Azure & Storage & Create Volume Snapshot & 11  \\
-Azure & Storage & Delete Volume Snapshot & 3  \\
-Azure & Storage & Delete Vol/Bucket & 6  \\
-Azure & Compute & Create VM & 15  \\
-Azure & Compute & List VM & 2  \\
-Azure & Compute & Stop VM & 57  \\
-Azure & Compute & Start VM & 57  \\
-Azure & Compute & Delete VM & 207  \\
-Azure & Storage & Create Vol/Bucket & 5  \\
-Azure & Storage & Create Volume Snapshot & 13  \\
-Azure & Storage & Delete Volume Snapshot & 5  \\
-Azure & Storage & Delete Vol/Bucket & 7  \\
+AWS & Create VM & 37.6 & 33 & 13.41806411 \\
+AWS & Create Vol/Bucket & 1.8 & 1 & 2.299758441 \\
+AWS & Delete S3 File & 0.4 & 0 & 0.516397779 \\
+AWS & Delete VM & 3.2 & 1 & 4.391911758 \\
+AWS & Delete Vol/Bucket & 0.7 & 1 & 0.483045892 \\
+AWS & Download File from S3 & 0.5 & 0 & 0.527046277 \\
+AWS & Get VM Details & 7.8 & 1 & 17.25495098 \\
+AWS & Get Vol/Bucket Details & 1.8 & 0 & 3.735713527 \\
+AWS & List VM & 23.1 & 1 & 56.68715316 \\
+AWS & List Vol/Bucket Details & 0.4 & 0 & 0.516397779 \\
+AWS & Start VM & 16.4 & 1 & 46.26301619 \\
+AWS & Stop VM & 21.9 & 1 & 49.73362377 \\
+AWS & Upload File to S3 & 1.1 & 1 & 1.791957341 \\
+Azure & Create VM & 27.5 & 15 & 42.41658481 \\
+Azure & Create Vol/Bucket & 15.4 & 5 & 35.7217643 \\
+Azure & Create Volume Snapshot & 20.7 & 11 & 38.01768594 \\
+Azure & Delete VM & 199.3 & 210 & 42.57294394 \\
+Azure & Delete Vol/Bucket & 4.3 & 6 & 2.983286778 \\
+Azure & Delete Volume Snapshot & 2.8 & 3 & 1.87379591 \\
+Azure & List VM & 2.5 & 2 & 2.677063067 \\
+Azure & Start VM & 26 & 23 & 10.98483804 \\
+Azure & Stop VM & 60.9 & 59 & 38.66221239 \\
+Google & Create VM & 12.4 & 11 & 4.402019738 \\
+Google & Create Vol/Bucket & 126.7 & 168 & 85.77496397 \\
+Google & Create Volume Snapshot & 26.1 & 13 & 35.63222636 \\
+Google & Delete VM & 87 & 64 & 46.64761516 \\
+Google & Delete Vol/Bucket & 6.6 & 6 & 0.699205899 \\
+Google & Delete Volume Snapshot & 23.8 & 4 & 42.56185042 \\
+Google & List VM & 9.6 & 5 & 10.5746027 \\
+Google & Start VM & 23.4 & 21 & 14.42374585 \\
+Google & Stop VM & 62.4 & 53 & 35.89552742 \\
 \end{tabular}
 \end{table}
 
