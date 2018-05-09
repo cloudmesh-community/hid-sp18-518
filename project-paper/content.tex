@@ -1,16 +1,36 @@
 % status: 100
 % chapter: REST
 % 
+
+
+\def\paperstatus{100} % a number from 0-100 indicating your status. 100
+                % means completed
+\def\paperchapter{REST} % This section is typically a single keyword. from
+                   % a small list. Consult with theinstructors about
+                   % yours. They typically fill it out once your first
+                   % text has been reviewed.
+\def\hid{hid-sp18-518, hid-sp18-402, hid-sp18-517} % all hids of the authors of this
+                                % paper. The paper must only be in one
+                                % authors directory and all other
+                                % authors contribute to it in that
+                                % directory. That authors hid must be
+                                % listed first
+\def\volume{9} % the volume of the proceedings in which this paper is to
+           % be included
+
+\def\locator{\hid, Volume: \volume, Chapter: \paperchapter, Status: \paperstatus. \newline}
+
 \title{Leveraging REST for cloud portability}
 
-\author{Harshad Pitkar}
+\author{Michael Robinson}
 \affiliation{%
   \institution{Indiana University}
   \city{Bloomington} 
   \state{IN} 
   \postcode{47408}
   \country{USA}}
-\email{hpitkar@iu.edu}
+\email{micbrobi@iu.edu}
+
 
 \author{Sushant Athaley}
 \affiliation{%
@@ -22,14 +42,15 @@
   \country{USA}}
 \email{sathaley@iu.edu}
 
-\author{Michael Robinson}
+
+\author{Harshad Pitkar}
 \affiliation{%
   \institution{Indiana University}
   \city{Bloomington} 
   \state{IN} 
   \postcode{47408}
   \country{USA}}
-\email{micbrobi@iu.edu}
+\email{hpitkar@iu.edu}
 
 
 % The default list of authors is too long for headers}
@@ -51,7 +72,7 @@ concluded how the research can be applied to existing and new development
 efforts intending to leverage cloud providers. 
 \end{abstract}
 
-\keywords{hid-sp18-518, hid-sp18-517, hid-sp18-402, libcloud, boto}
+\keywords{\locator\ libcloud, boto}
 
 \maketitle
 
@@ -682,15 +703,14 @@ boto3 to connect to your EC2 instances and perform the action.
 \begin{figure}[htb]
 \begin{verbatim}
 
-# To start the instance
+\# To start the instance
 $ python boto_ec2.py <on> <instance id>
 
-# To stop the instance
+\# To stop the instance
 $ python boto_ec2.py <off> <instance id>
 
-# Add below code to a file named boto_ec2.py
-# 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+\# Add below code to a file named boto_ec2.py
+
 import boto3
 
 action = sys.argv[1].upper()
@@ -762,8 +782,8 @@ def
 createAzureVM(vmname,vmsize,image_name,resource_group,storage_account,nw_intf,
 blob_container): 
 
-#print region
-#
+\#print region
+
 	urn='Canonical:UbuntuServer:16.04-LTS:latest'
 
 	image=driver.get_image(urn, location=None)
